@@ -1,4 +1,60 @@
 .jumbotron__wrapper {
     background: #ededff;
     height: 500px;
+    color: #5d5dff;
+}
+
+.jumbotron__header {
+    text-align: center;
+    font-size: 4rem;
+    padding-top: 50px;
+}
+
+.jumbotron__subheader {
+    text-align: center;
+    font-size: 2rem;
+}
+
+.cta {
+    text-align: center;
+}
+
+.cta__button {
+    background: #ffb732;
+    display: inline-block;
+    font-size: 2rem;
+    padding: 20px 40px;
+    margin-top: 24px;
+    color: white;
+    border-radius: 2px;
+    -webkit-box-shadow: 4px 2px 17px 2px rgba(0,0,0,0.17);
+    -moz-box-shadow: 4px 2px 17px 2px rgba(0,0,0,0.17);
+    box-shadow: 4px 2px 17px 2px rgba(0,0,0,0.17);
+    transition: all .3s ease-in-out;
+}
+
+.cta__button:hover {
+    background: #ffa500;
+    color: white;
+}
+
+.cards {
+    margin-top: 130px;
+    width: 100%;
+}
+
+.cards__wrapper {
+    width: 70%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+}
+
+.card {
+    border: 2px solid blue;
+    position: relative;
+    border-radius: 50%;
+    width: 250px;
+    height: 250px;
+    background: white;
 }
