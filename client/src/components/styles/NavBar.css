@@ -1,0 +1,31 @@
+.menu__wrapper {
+    background: #4C4CFF;
+
+}
+.menu {
+    margin: 0 auto;
+    width: 70%;
+    display: flex;
+    justify-content: space-around;
+    color: white;
+    padding-top: 17px;
+    padding-bottom: 12px;
+    align-content: baseline;
+}
+
+.menu__item {
+    color: #dbdbff;
+    font-size: 1.7rem;
+    font-weight: 400;
+    margin-right: 15px;
+
+}
+
+.menu__item:hover {
+    color: #9393ff;
+}
+
+.brand {
+    font-size: 2rem;
+    font-weight: 700;
+}
