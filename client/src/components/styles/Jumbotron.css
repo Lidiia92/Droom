@@ -1,12 +1,12 @@
 .jumbotron__wrapper {
-    background: #ededff;
+    background: #ccdfe3;
     height: 500px;
-    color: #5d5dff;
+    color: #328090;
 }
 
 .jumbotron__header {
     text-align: center;
-    font-size: 4rem;
+    font-size: 5rem;
     padding-top: 50px;
 }
 
@@ -22,8 +22,8 @@
 .cta__button {
     background: #ffb732;
     display: inline-block;
-    font-size: 2rem;
-    padding: 20px 40px;
+    font-size: 3rem;
+    padding: 25px 40px 25px 40px;
     margin-top: 24px;
     color: white;
     border-radius: 2px;
@@ -39,7 +39,7 @@
 }
 
 .cards {
-    margin-top: 130px;
+    margin-top: 80px;
     width: 100%;
 }
 
@@ -51,10 +51,18 @@
 }
 
 .card {
-    border: 2px solid blue;
+    border: 2px solid #006175;
     position: relative;
     border-radius: 50%;
     width: 250px;
     height: 250px;
     background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-svg {
+    font-size: 12rem;
+
 }

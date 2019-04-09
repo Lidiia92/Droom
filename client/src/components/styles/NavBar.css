@@ -1,5 +1,5 @@
 .menu__wrapper {
-    background: #4C4CFF;
+    background: #006175;
 
 }
 .menu {
@@ -14,7 +14,7 @@
 }
 
 .menu__item {
-    color: #dbdbff;
+    color: #ccdfe3;
     font-size: 1.7rem;
     font-weight: 400;
     margin-right: 15px;
@@ -22,7 +22,7 @@
 }
 
 .menu__item:hover {
-    color: #9393ff;
+    color: #99bfc7;
 }
 
 .brand {
