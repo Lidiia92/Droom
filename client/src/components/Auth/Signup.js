@@ -5,7 +5,8 @@ const Signup = () => {
     return (
         <div className="signup-bc">
             <div className="form-wrapper">
-                Signup
+                <h2 className="form-heading">Sign Up</h2>
+                <h4 className="form-subheading">It's free and only takes a minute.</h4>
             </div>
         </div>
     );
