@@ -1,26 +1,49 @@
-import React, { Component } from 'react';
+import React, {  useState } from 'react';
 import {Link} from 'react-router-dom';
 import './styles/Jumbotron.css';
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUser, faSearch} from '@fortawesome/free-solid-svg-icons'
+import { faUser, faSearch, faHandshake} from '@fortawesome/free-solid-svg-icons'
 
-library.add(faUser, faSearch)
+library.add(faUser, faSearch, faHandshake)
 
-const Jumbotron = () => (
-    <div className="jumbotron__wrapper">
-        <h1 className="jumbotron__header">Welcome, to Droom</h1>
-        <p className="jumbotron__subheader">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris porta consectetur nisl. Sed at vehicula justo.</p>
-        <p className="cta"><Link className="cta__button">Get Started!</Link></p>
-        <div className="cards">
-            <div className="cards__wrapper">
-                <div className="card"><FontAwesomeIcon className="card-svg" icon="user"/></div>
-                <div className="card"><FontAwesomeIcon className="card-svg" icon="search"/></div>
-                <div className="card"></div>
+const Jumbotron = () => {
+
+    const [firstQ, setFirstQ] = useState('')
+
+    function showQuestion1() {
+        console.log('test 1');
+        setFirstQ('This is the Question');
+    }
+
+
+
+    return(
+        <div className="jumbotron__wrapper">
+            <h1 className="jumbotron__header">Welcome, to Droom</h1>
+            <p className="jumbotron__subheader">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris porta consectetur nisl. Sed at vehicula justo.</p>
+            <p className="cta"><Link className="cta__button">Get Started!</Link></p>
+            <div className="cards">
+                <div className="cards__wrapper">
+                    <div>
+                        <div className="card" ><FontAwesomeIcon className="card-svg" icon="user"/></div>
+                        <p className="question">STEP 1: <p>CREATE AN ACCOUNT</p></p>
+                    </div>
+                    <div>
+                        <div className="card"><FontAwesomeIcon className="card-svg" icon="search"/></div>
+                        <div className="question">STEP 2: <p>FIND YOUR DREAM JOB</p></div>
+                    </div>
+                    <div>
+                        <div className="card"><FontAwesomeIcon className="card-svg" icon="handshake"/></div>
+                        <div className="question">STEP 3: <p>CONGRATULATIONS ON A NEW JOB</p></div>
+                    </div>
+                </div>
             </div>
+
+            <footer className="footer">© Nothing Fancy Inc 2019</footer>
         </div>
-    </div>
-);
+    );
+};
 
 export default Jumbotron;
