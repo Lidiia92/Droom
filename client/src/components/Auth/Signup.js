@@ -6,17 +6,30 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 const Signup = () => {
 
     const [toggler, setToggler] = useState(false);
+    const [username, setUsername] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [passwordConfirm, setPasswordConfirm] = useState("");
+    const [userRole, setRole] = useState("");
 
+    const [newUser, submitNewUser] = useState({});
+
+    function submitHandler(e) {
+        e.preventDefault();
+        submitNewUser({username, email, password, passwordConfirm, userRole})
+        console.log('hmmmmm');
+        setUsername("");
+    }
 
     return (
         <div className="signup-bc">
             <div className="form-wrapper">
                 <h2 className="form-heading">Sign Up</h2>
                 <h4 className="form-subheading">It's free and only takes a minute.</h4>
-                <div className="inputs-wrapper">
+                <form className="inputs-wrapper" onSubmit={submitHandler}>
                     <div className="input-row">
                         <label className="label" for="username">Username</label>
-                        <input type="text" name="username" id="username" />
+                        <input type="text" name="username" id="username" onChange={e => setUsername(e.target.value)} value={username}/>
                     </div>
                     <div className="input-row">
                         <label className="label" for="email">Email</label>
@@ -24,7 +37,7 @@ const Signup = () => {
                     </div>
                     <div className="input-row">
                         <label className="label" for="email">Password</label>
-                        <input type="password" name="password" id="password" />
+                        <input type={toggler ? "text" : "password"} name="password" id="password" />
                         <span className={toggler ? "toggle-green" : "toggle-red"} onClick={() => setToggler(!toggler)}>
                             {toggler ? <FontAwesomeIcon icon="eye"/> : <FontAwesomeIcon icon="eye-slash"/>}
                             {toggler ? " Hide Password" : " Show Password"}
@@ -53,11 +66,11 @@ const Signup = () => {
                     </div>
 
                     <div className="input-row">
-                        <button>Sign Up</button>
+                        <button type="submit">Sign Up</button>
                     </div>
 
                     <div className="login-question"><p>Already have an account?<span><Link> Login here</Link></span></p></div>
-                </div>
+                </form>
             </div>
         </div>
     );

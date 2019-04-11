@@ -58,6 +58,11 @@ h4.form-subheading {
     border: 1px solid #ccc;
     border-radius: 4px;
     color: #6e6e6e;
+    background-color: #fff !important;
+}
+
+.input-row input:focus, .input-row input:active {
+    background-color: #fff !important;
 }
 
 .input-row span {
@@ -120,6 +125,7 @@ button {
     color: white;
     font-size: 1.2rem;
     margin-top: 8px;
+    cursor: pointer;
 }
 
 .login-question {
