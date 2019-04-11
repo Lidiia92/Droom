@@ -12,8 +12,15 @@ const Signup = () => {
     const [passwordConfirm, setPasswordConfirm] = useState("");
     const [userRole, setUserRole] = useState("");
     const [newUser, submitNewUser] = useState({});
+    const [newError, setNewError] = useState("");
 
     function submitHandler(e, user) {
+        if(password !== passwordConfirm) {
+            e.preventDefault();
+            const errMessage = "Passwords do not match";
+            setNewError(errMessage);
+            return;
+        }
         e.preventDefault();
         submitNewUser(user);
         console.log(user);
@@ -21,6 +28,7 @@ const Signup = () => {
         setEmail("");
         setPassword("");
         setPasswordConfirm("");
+        setNewError("");
 
     }
 
@@ -48,8 +56,8 @@ const Signup = () => {
                     </div>
                     <div className="input-row mg-12px">
                         <label className="label" htmlFor="passwordConfirm">Confirm Password</label>
-                        <label className="label" htmlFor="passwordConfirm">Confirm Password</label>
-                        <input type="password" name="passwordConfirm" id="passwordConfirm" onChange={e => setPasswordConfirm(e.target.value)} value={passwordConfirm}/>
+                        {newError ? <label htmlFor="passwordConfirm" className="error" id="error">{newError}</label> : ""}
+                        <input type={toggler ? "text" : "password"} name="passwordConfirm" id="passwordConfirm" onChange={e => setPasswordConfirm(e.target.value)} value={passwordConfirm}/>
                     </div>
                     
                     <div className="input-row">

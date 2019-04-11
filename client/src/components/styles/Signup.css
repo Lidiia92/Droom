@@ -104,9 +104,6 @@ h4.form-subheading {
     margin-top: 12px;
 }
 
-.toggle-red {
-    color: #ff6666;
-}
 
 .toggle-red {
     color: #ff6666;
@@ -137,6 +134,10 @@ button {
     font-size: 1.1rem;
 }
 
+.input-row #error {
+    color: #ff6666;
+    font-weight: 700;
+}
 
    
  
