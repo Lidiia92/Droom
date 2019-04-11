@@ -6,13 +6,13 @@
 
 .jumbotron__header {
     text-align: center;
-    font-size: 5rem;
+    font-size: 4rem;
     padding-top: 50px;
 }
 
 .jumbotron__subheader {
     text-align: center;
-    font-size: 2rem;
+    font-size: 1.5rem;
 }
 
 .cta {
@@ -22,8 +22,8 @@
 .cta__button {
     background: #ffb732;
     display: inline-block;
-    font-size: 3rem;
-    padding: 25px 40px 25px 40px;
+    font-size: 1.8rem;
+    padding: 20px 35px 20px 35px;
     margin-top: 24px;
     color: white;
     border-radius: 2px;
@@ -67,14 +67,14 @@
 }
 
 .card-svg {
-    font-size: 12rem;
+    font-size: 8rem;
     color: #0EBE96;
 
 }
 
 .question {
     color: #0EBE96;
-    font-size: 1.6rem;
+    font-size: 1.2rem;
     font-weight: 700;
     margin-top: 20px;
     width: 250px;

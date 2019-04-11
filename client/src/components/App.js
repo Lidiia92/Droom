@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import 'semantic-ui-css/semantic.min.css';
 
 import './styles/App.css';
 import Jumbotron from './Jumbotron';

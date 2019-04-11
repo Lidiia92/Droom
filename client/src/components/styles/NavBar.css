@@ -15,8 +15,8 @@
 
 .menu__item {
     color: #ccdfe3;
-    font-size: 1.7rem;
-    font-weight: 400;
+    font-size: 1.3rem;
+    font-weight: 200;
     margin-right: 15px;
 
 }
@@ -26,6 +26,6 @@
 }
 
 .brand {
-    font-size: 2rem;
+    font-size: 1.4rem;
     font-weight: 700;
 }
