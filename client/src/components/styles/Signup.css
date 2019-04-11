@@ -91,5 +91,28 @@ h4.form-subheading {
     color: #6e6e6e;
 }
 
+.mg-12px {
+    margin-top: 12px;
+}
+
+.toggle-red {
+    color: #ff6666;
+}
+
+.toggle-red {
+    color: #ff6666;
+}
+
+.toggle-green {
+    color: #006175;
+}
+
+button {
+    border: none;
+    background: #0EBE96;
+    border-radius: 3px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
    
  

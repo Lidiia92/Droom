@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {Link} from 'react-router-dom';
 import '../styles/Signup.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const Signup = () => {
+
+    const [toggler, setToggler] = useState(false);
+
+
     return (
         <div className="signup-bc">
             <div className="form-wrapper">
@@ -21,9 +25,9 @@ const Signup = () => {
                     <div className="input-row">
                         <label className="label" for="email">Password</label>
                         <input type="password" name="password" id="password" />
-                        <span><FontAwesomeIcon icon="eye-slash"/>Show Password</span>
+                        <span className={toggler ? "toggle-green" : "toggle-red"}><FontAwesomeIcon icon="eye-slash"/> Show Password</span>
                     </div>
-                    <div className="input-row">
+                    <div className="input-row mg-12px">
                         <label className="label" for="passwordConfirm">Confirm Password</label>
                         <input type="password" name="passwordConfirm" id="passwordConfirm" />
                     </div>
