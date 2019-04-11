@@ -32,6 +32,10 @@ const Signup = () => {
 
     }
 
+    const errorStyle = {
+        border: '2px solid #ff6666',
+    };
+
     return (
         <div className="signup-bc">
             <div className="form-wrapper">
@@ -48,7 +52,7 @@ const Signup = () => {
                     </div>
                     <div className="input-row">
                         <label className="label" htmlFor="email">Password</label>
-                        <input type={toggler ? "text" : "password"} name="password" id="password" onChange={e => setPassword(e.target.value)} value={password}/>
+                        <input style={newError ? errorStyle : {}} type={toggler ? "text" : "password"} name="password" id="password" onChange={e => setPassword(e.target.value)} value={password}/>
                         <span className={toggler ? "toggle-green" : "toggle-red"} onClick={() => setToggler(!toggler)}>
                             {toggler ? <FontAwesomeIcon icon="eye"/> : <FontAwesomeIcon icon="eye-slash"/>}
                             {toggler ? " Hide Password" : " Show Password"}
@@ -57,7 +61,7 @@ const Signup = () => {
                     <div className="input-row mg-12px">
                         <label className="label" htmlFor="passwordConfirm">Confirm Password</label>
                         {newError ? <label htmlFor="passwordConfirm" className="error" id="error">{newError}</label> : ""}
-                        <input type={toggler ? "text" : "password"} name="passwordConfirm" id="passwordConfirm" onChange={e => setPasswordConfirm(e.target.value)} value={passwordConfirm}/>
+                        <input  style={newError ? errorStyle : {}} type={toggler ? "text" : "password"} name="passwordConfirm" id="passwordConfirm" onChange={e => setPasswordConfirm(e.target.value)} value={passwordConfirm}/>
                     </div>
                     
                     <div className="input-row">
