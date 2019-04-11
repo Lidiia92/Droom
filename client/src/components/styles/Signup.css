@@ -30,3 +30,66 @@ h4.form-subheading {
     font-weight: 300;
     margin-top: 0;
 }
+
+.inputs-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 70%;
+    margin: 20px auto 0 auto;
+}
+
+.input-row {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 6px;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.input-row label {
+    color: #0EBE96;
+    font-size: 1rem;
+}
+
+.input-row input {
+    padding: 12px 20px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    color: #6e6e6e;
+}
+
+.input-row input .container{
+    padding: 12px 20px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    color: blue;
+}
+
+.container{
+    display: block;
+}
+
+.container ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    overflow: auto;
+  }
+
+.container h6 {
+    margin: 0;
+    color: #0EBE96;
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+.container label {
+    margin-left: 8px;
+    color: #6e6e6e;
+}
+
+   
+ 

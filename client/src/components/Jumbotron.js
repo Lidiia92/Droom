@@ -1,12 +1,7 @@
 import React, {  useState } from 'react';
 import {Link} from 'react-router-dom';
 import './styles/Jumbotron.css';
-
-import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUser, faSearch, faHandshake} from '@fortawesome/free-solid-svg-icons'
-
-library.add(faUser, faSearch, faHandshake)
 
 const Jumbotron = () => {
 

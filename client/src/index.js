@@ -7,6 +7,11 @@ import NavBar from './components/NavBar'
 import App from './components/App';
 import Signup from './components/Auth/Signup';
 
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faUser, faSearch, faHandshake, faEyeSlash} from '@fortawesome/free-solid-svg-icons'
+
+library.add(faUser, faSearch, faHandshake, faEyeSlash)
+
 const Root = () => (
     <Router>
         <NavBar />
