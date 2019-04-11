@@ -11,7 +11,6 @@ const Signup = () => {
     const [password, setPassword] = useState("");
     const [passwordConfirm, setPasswordConfirm] = useState("");
     const [userRole, setUserRole] = useState("");
-
     const [newUser, submitNewUser] = useState({});
 
     function submitHandler(e, user) {
