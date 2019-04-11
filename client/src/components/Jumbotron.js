@@ -5,15 +5,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const Jumbotron = () => {
 
-    const [firstQ, setFirstQ] = useState('')
-
-    function showQuestion1() {
-        console.log('test 1');
-        setFirstQ('This is the Question');
-    }
-
-
-
     return(
         <div className="jumbotron__wrapper">
             <h1 className="jumbotron__header">Welcome, to Droom</h1>

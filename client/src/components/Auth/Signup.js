@@ -25,7 +25,10 @@ const Signup = () => {
                     <div className="input-row">
                         <label className="label" for="email">Password</label>
                         <input type="password" name="password" id="password" />
-                        <span className={toggler ? "toggle-green" : "toggle-red"}><FontAwesomeIcon icon="eye-slash"/> Show Password</span>
+                        <span className={toggler ? "toggle-green" : "toggle-red"} onClick={() => setToggler(!toggler)}>
+                            {toggler ? <FontAwesomeIcon icon="eye"/> : <FontAwesomeIcon icon="eye-slash"/>}
+                            {toggler ? " Hide Password" : " Show Password"}
+                        </span>
                     </div>
                     <div className="input-row mg-12px">
                         <label className="label" for="passwordConfirm">Confirm Password</label>
@@ -53,7 +56,7 @@ const Signup = () => {
                         <button>Sign Up</button>
                     </div>
 
-                    <div >Already have an account?<span><Link> Login here</Link></span></div>
+                    <div className="login-question"><p>Already have an account?<span><Link> Login here</Link></span></p></div>
                 </div>
             </div>
         </div>
