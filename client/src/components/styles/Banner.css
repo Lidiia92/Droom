@@ -24,28 +24,25 @@
 .banner__text h1 {
     font-size: 5rem;
 }
-/*
 
-.banner__img {
-    width: 50%;
-    padding: 0;
-    margin: 0;
-    background: url('../../images/603.jpg');
-    background-repeat: no-repeat;
-    background-size: 100% auto;
-
+.banner__content-sm {
+    display: none;
 }
 
-.banner__text {
-    width: 50%;
-} */
 
-/* .banner__content img {
-    height: auto; 
-    width: auto; 
-    min-width: 700px; 
-    min-height: 700px;
-    padding: 0;
-    margin: 0;
+@media (max-width: 800px) {
+    .Banner {
+        background: url('../../images/606.jpg') no-repeat center center fixed;
+        background-size: contain;
+    }
 
-} */
+    .banner__content {
+        display: none;
+    }
+
+    .banner__content-sm {
+        display: block;
+        background: #69a0a3;
+    }
+
+}
