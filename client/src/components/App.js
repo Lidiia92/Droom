@@ -18,7 +18,9 @@ class App extends Component {
 					<h1>GREAT CAREER AHEAD</h1>
 					<h3>Looking for a dream job?</h3>
 					<h3>You came to the right place</h3>
-					<p>Thousands job opportunities are within one click</p>
+					<p className="p-sm">Thousands job opportunities are within one click</p>
+					<button className="cta">GET STARTED!</button>
+            		<button className="cta cta-green">How does it work?</button>
 				</div>
 			</div>
 

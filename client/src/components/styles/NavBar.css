@@ -1,5 +1,5 @@
 .menu__wrapper {
- 
+    background: #69a0a3;
 }
 .menu {
     margin: 0 auto;
@@ -7,8 +7,8 @@
     display: flex;
     justify-content: space-around;
     color: white;
-    padding-top: 17px;
-    padding-bottom: 12px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     align-content: baseline;
 }
 
@@ -22,6 +22,11 @@
 
 .menu__item:hover {
     color: #bed2d3;
+}
+
+.link {
+    padding-top: 3px;
+    display: inline-block
 }
 
 .brand {

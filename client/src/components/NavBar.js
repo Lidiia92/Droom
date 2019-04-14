@@ -16,12 +16,12 @@ export default class NavBar extends Component {
 
                 <div>
 
-                    <Link to="/login" className="menu__item">
+                    <Link to="/login" className="menu__item link">
                         Login
                     </Link>
 
 
-                    <Link to="/signup" className="menu__item">
+                    <Link to="/signup" className="menu__item link">
                         Signup
                     </Link>
                 </div>
