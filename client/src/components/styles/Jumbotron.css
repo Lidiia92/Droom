@@ -1,45 +1,22 @@
-.jumbotron__wrapper {
-    background: #ccdfe3;
-    height: 500px;
-    color: #328090;
-}
-
-.jumbotron__header {
-    text-align: center;
-    font-size: 3.7rem;
-    padding-top: 50px;
+.heading {
+    font-size: 5rem;
+    color: #262d3f;
     text-transform: uppercase;
-}
-
-.jumbotron__subheader {
     text-align: center;
-    font-size: 1.4rem;
-    
+    margin-top: 50px;
+    margin-bottom: 0;
+    padding-left: 8px;
 }
 
-.cta {
-    text-align: center;
-}
-
-.cta__button {
-    background: #ffb732;
-    display: inline-block;
-    font-size: 1.5rem;
-    padding: 20px 35px 20px 35px;
-    margin-top: 24px;
-    color: white;
-    border-radius: 2px;
-    -webkit-box-shadow: 4px 2px 17px 2px rgba(0,0,0,0.17);
-    -moz-box-shadow: 4px 2px 17px 2px rgba(0,0,0,0.17);
-    box-shadow: 4px 2px 17px 2px rgba(0,0,0,0.17);
-    transition: all .3s ease-in-out;
+.subheading {
+    font-size: 2rem;
+    font-weight: 300;
     text-transform: uppercase;
+    margin-bottom: 40px;
+    margin-top: 0;
+    text-align: center;
 }
 
-.cta__button:hover {
-    background: #ffa500;
-    color: white;
-}
 
 .cards {
     margin-top: 80px;
@@ -70,15 +47,15 @@
 }
 
 .card-svg {
-    font-size: 8rem;
+    font-size: 11rem;
     color: #0EBE96;
 
 }
 
 .question {
     color: #0EBE96;
-    font-size: 1.1rem;
-    font-weight: 700;
+    font-size: 1.6rem;
+    font-weight: 400;
     margin-top: 20px;
     width: 250px;
     text-align: center;

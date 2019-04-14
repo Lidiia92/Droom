@@ -6,10 +6,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 const Jumbotron = () => {
 
     return(
-        <div className="jumbotron__wrapper">
-            <h1 className="jumbotron__header">Welcome, to Droom</h1>
-            <p className="jumbotron__subheader">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris porta consectetur nisl. Sed at vehicula justo.</p>
-            <p className="cta"><Link className="cta__button">Get Started!</Link></p>
+        <div >
+            <h2 className="heading">How does it work?</h2>
+            <h3 className="subheading">Take three easy steps towards your dream job!</h3>
             <div className="cards">
                 <div className="cards__wrapper">
                     <div>
@@ -18,11 +17,11 @@ const Jumbotron = () => {
                     </div>
                     <div>
                         <div className="card"><FontAwesomeIcon className="card-svg" icon="search"/></div>
-                        <div className="question">STEP 2: <p>FIND YOUR DREAM JOB</p></div>
+                        <div className="question">STEP 2: <p>FIND JOBS YOU LIKE</p></div>
                     </div>
                     <div>
                         <div className="card"><FontAwesomeIcon className="card-svg" icon="handshake"/></div>
-                        <div className="question">STEP 3: <p>CONGRATULATIONS ON A NEW JOB</p></div>
+                        <div className="question">STEP 3: <p>APPLY WITH ONE CLICK</p></div>
                     </div>
                 </div>
             </div>
