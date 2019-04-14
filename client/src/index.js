@@ -14,7 +14,6 @@ library.add(faUser, faSearch, faHandshake, faEyeSlash, faEye)
 
 const Root = () => (
     <Router>
-        <NavBar />
         <Switch>
             <Route path="/" exact component={App} />
             <Route path="/signup" render={() => <Signup />} />
