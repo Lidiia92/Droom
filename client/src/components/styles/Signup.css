@@ -1,6 +1,7 @@
 .signup-bc {
     background: #ccdfe3;
-    height: 100vh;
+    height: auto;
+    padding-bottom: 45.5px;
 }
 
 .form-wrapper {
@@ -19,13 +20,13 @@ h2.form-heading {
     color: #0EBE96;
     text-align: center;
     margin-top: 30px;
-    font-size: 2rem;
+    font-size: 2.5rem;
 }
 
 h4.form-subheading {
     color: #6e6e6e;
     text-align: center;
-    font-size: 1.2rem;
+    font-size: 1.8rem;
     font-weight: 300;
     margin-top: 0;
 }
@@ -43,12 +44,12 @@ h4.form-subheading {
     flex-direction: column;
     width: 100%;
     margin-bottom: 6px;
-    font-family: 'Quicksand', sans-serif;
+    font-family: 'Roboto Condensed', sans-serif;
 }
 
 .input-row label {
     color: #0EBE96;
-    font-size: 1rem;
+    font-size: 1.6rem;
 }
 
 .input-row input {
@@ -89,8 +90,9 @@ h4.form-subheading {
 
 .container h6 {
     margin: 0;
+    margin-top: 30px;
     color: #0EBE96;
-    font-size: 1rem;
+    font-size: 1.6rem;
     font-weight: 400;
 }
 
@@ -106,10 +108,12 @@ h4.form-subheading {
 
 .toggle-red {
     color: #ff6666;
+    font-size: 1.5rem;
 }
 
 .toggle-green {
     color: #006175;
+    font-size: 1.5rem
 }
 
 button {
@@ -119,23 +123,42 @@ button {
     padding-top: 12px;
     padding-bottom: 12px;
     color: white;
-    font-size: 1.2rem;
+    font-size: 1.6rem;
     margin-top: 8px;
     cursor: pointer;
 }
 
 .login-question {
-    color: #006175;
+    color: #6e6e6e;
+    font-weight: 300;
     display: flex;
     justify-content: center;
     width: 70%;
     margin: 20px auto 0 auto;
-    font-size: 1.1rem;
+    font-size: 1.6rem;
 }
 
 .input-row #error {
     color: #ff6666;
     font-weight: 700;
+}
+
+.login-link {
+    color: #01a9ce;
+    text-decoration: none;
+    font-weight: 400;
+}
+
+
+@media (max-width: 950px) {
+    .signup-bc {
+        height: auto;
+    }
+
+    .form-wrapper {
+        width: 70%;
+        height: 90%;
+    }
 }
 
    

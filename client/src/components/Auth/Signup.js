@@ -41,7 +41,7 @@ const Signup = () => {
         <React.Fragment>
             <div className="signup-bc">
             <NavBar />
-            
+
                 <div className="form-wrapper">
                     <h2 className="form-heading">Sign Up</h2>
                     <h4 className="form-subheading">It's free and only takes a minute.</h4>
@@ -95,7 +95,7 @@ const Signup = () => {
                             <button type="submit">Sign Up</button>
                         </div>
 
-                        <div className="login-question"><p>Already have an account?<span><Link to="/login"> Login here</Link></span></p></div>
+                        <div className="login-question"><p>Already have an account?<span><Link to="/login" className="login-link"> Login here</Link></span></p></div>
                     </form>
                 </div>
             </div>
