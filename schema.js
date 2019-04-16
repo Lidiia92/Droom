@@ -11,7 +11,7 @@ exports.typeDefs =`
     }
 
     type UserSkills {
-        jobInterest: [String]
+        jobInterests: [String]
         skills: [String]
     }
 
@@ -26,14 +26,12 @@ exports.typeDefs =`
     type UserExperience {
         companyName: String
         title: String
-        city: String
-        state: String
         from: String
         to: String
     }
 
     type User {
-        _id: ID
+        _id: ID!
         username: String! @unique
         password: String!
         email: String!

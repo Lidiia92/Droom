@@ -6,11 +6,19 @@ exports.resolvers = {
     },
 
     Mutation: {
-        signupUser: (root, args) => {
-            console.log('args', args);
-            const {username, email} = args;
-            return (`User ${username} was signed up`);
-        }
+        signupUser: async (root, args, context) => {
+
+            const {User} = context;
+
+            const newUser = await new User({
+                username: args.username,
+                email: args.email,
+                password: args.password,
+                role: args.role
+            }).save();
+    
+                return `New user was created ${newUser}`;
+        },
 
     }
 

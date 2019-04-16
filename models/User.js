@@ -3,6 +3,14 @@ const Schema = mongoose.Schema;
 const bcrypt = require('bcrypt');
 
 const UserSchema = new Schema({
+
+    _id: {
+        
+        type: Schema.ObjectId, 
+        auto: true 
+
+    },
+
     username: {
         type: String,
         required: true,
@@ -29,7 +37,9 @@ const UserSchema = new Schema({
         default: "employee"
     },
 
-    personalInfo: {
+    personalInfo: [
+        
+        {
 
         firstName: {
             type: String,
@@ -56,45 +66,84 @@ const UserSchema = new Schema({
             default: ""
         }, 
 
-        zipCode: {
+        avatar: {
             type: String,
             default: ""
-        }
-
-    },
-
-    avatar: {
-        type: String,
-        default: ""
-    },
-
-    preferedFields: {
-        type: [String],
-        default: [""]
-    },
-
-    preferedLocations: {
-        type: [String],
-        default: [""]
-    },
-    
-
-});
-
-//Before User saved to the db
-UserSchema.pre('save', function(next) {
-    if(!this.isModified()) {
-        return next();
+        },
     }
 
-    bcrypt.genSalt(10, (err, salt) => {
-        if(err) return next(err);
-        bcrypt.hash(this.password, salt, (err, hash) => {
-            if(err) return next(err);
-            this.password = hash;
-            next();
-        })
-    })
+    ],
+
+    userSkills: [
+        {
+            jobInterests: {
+                type: [String],
+                default: [""]
+            },
+
+            skills: {
+                type: [String],
+                default: [""]
+            }
+        }
+    ],
+
+    education: [
+
+        {
+            schoolName: {
+                type: String,
+                default: ""
+            },
+
+            degree: {
+                type: String,
+                default: ""
+            },
+
+            field: {
+                type: String,
+                default: ""
+            },
+
+            from: {
+                type: String,
+                default: ""
+            },
+
+            to: {
+                type: String,
+                default: ""
+            }
+        }
+    ],
+
+    experience: [
+        {
+            companyName: {
+                type: String,
+                default: ""
+            },
+
+            title: {
+                type: String,
+                default: ""
+            },
+
+            from: {
+                type: String,
+                default: ""
+            },
+
+            to: {
+                type: String,
+                default: ""
+            }
+        }
+    ]
+ 
+
 });
+
 
 module.exports = mongoose.model('User', UserSchema);
