@@ -6,7 +6,7 @@ exports.resolvers = {
     },
 
     Mutation: {
-        signupUser: (_, args) => {
+        signupUser: (root, args) => {
             console.log('args', args);
             const {username, email} = args;
             return (`User ${username} was signed up`);

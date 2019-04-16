@@ -1,14 +1,35 @@
 
 exports.typeDefs =`
 
-    type UserInfo {
+    type PersonalInfo {
         firstName: String
         lastName: String
         DOB: String
         state: String
         city: String
-        interests: [String]
         avatar: String
+    }
+
+    type UserSkills {
+        jobInterest: [String]
+        skills: [String]
+    }
+
+    type UserEducation {
+        schoolName: String
+        degree: String
+        field: String
+        from: String
+        to: String
+    }
+
+    type UserExperience {
+        companyName: String
+        title: String
+        city: String
+        state: String
+        from: String
+        to: String
     }
 
     type User {
@@ -18,7 +39,11 @@ exports.typeDefs =`
         email: String!
         role: String!
         joinDate: String
-        userInfo: UserInfo
+        personalInfo: PersonalInfo
+        userSkills: [UserSkills]
+        education: [UserEducation]
+        experience: [UserExperience]
+
     }
 
     type Token {
