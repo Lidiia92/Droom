@@ -6,9 +6,12 @@ exports.resolvers = {
     },
 
     Mutation: {
-        signupUser: async (root, args, context) => {
+        signupUser: async (root, args, {User}) => {
 
-            const {User} = context;
+            const userForCheck = await User.findOne({username: args.username});
+            if(userForCheck) {
+                throw new Error('User already exists');
+            }
 
             const newUser = await new User({
                 username: args.username,
