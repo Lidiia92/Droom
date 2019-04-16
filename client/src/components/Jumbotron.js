@@ -7,7 +7,7 @@ const Jumbotron = () => {
 
     return(
         <div >
-            <h2 className="heading">How does it work?</h2>
+            <h2 id="about" className="heading">How does it work?</h2>
             <h3 className="subheading">Take three easy steps towards your dream job!</h3>
             <div className="cards">
                 <div className="cards__wrapper">

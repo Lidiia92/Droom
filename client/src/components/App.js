@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import AnchorLink from 'react-anchor-link-smooth-scroll'
 
 import './styles/App.css';
 import Banner from './Banner';
@@ -20,15 +21,17 @@ class App extends Component {
 					<h3>You came to the right place</h3>
 					<p className="p-sm">Thousands job opportunities are within one click</p>
 					<button className="cta">GET STARTED!</button>
-            		<button className="cta cta-green">How does it work?</button>
+            		<AnchorLink className="cta cta-green" href='#about'>HOW DOES IT WORK?</AnchorLink>
 				</div>
 			</div>
 
+
 			<Jumbotron />
-		  
         </div>
     );
   }
 }
 
 export default App;
+
+

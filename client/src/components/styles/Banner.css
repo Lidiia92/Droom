@@ -56,6 +56,7 @@
 
 .cta {
     background: #ffb732;
+    font-family: 'Roboto Condensed', sans-serif;
     display: inline-block;
     font-size: 1.8rem;
     padding: 20px 35px 20px 35px;
@@ -76,6 +77,8 @@
 
 .cta-green {
     background: #0EBE96;
+    display: inline-block;
+    text-decoration: none;
 }
 
 .cta-green:hover {
