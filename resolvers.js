@@ -1,4 +1,10 @@
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+
+const createToken = (user, secret, expiresIn) => {
+    const {username, email} = user; 
+    return jwt.sign({username, email}, secret, {expiresIn})
+}
 
 exports.resolvers = {
     Query: {
@@ -23,8 +29,9 @@ exports.resolvers = {
                 password: hash,
                 role: args.role
             }).save();
-    
-                return `New user was created ${newUser}`;
+
+            const token  = createToken(newUser, process.env.SECRET, '1hr');
+            return ['token', token, 'userId', newUser._id];
         },
 
     }
