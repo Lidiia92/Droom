@@ -31,7 +31,7 @@ exports.resolvers = {
             }).save();
 
             const token  = createToken(newUser, process.env.SECRET, '1hr');
-            return ['token', token, 'userId', newUser._id];
+            return {token: token, uid: newUser._id};
         },
 
     }

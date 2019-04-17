@@ -48,6 +48,7 @@ exports.typeDefs =`
 
     type Token {
         token: String!
+        uid: String
     }
 
     type Query {
@@ -56,7 +57,7 @@ exports.typeDefs =`
     }
 
     type Mutation {
-        signupUser(username: String!, email: String!, password: String!, role: String): [String]
+        signupUser(username: String!, email: String!, password: String!, role: String): Token
 
     }
 
