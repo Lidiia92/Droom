@@ -8,6 +8,20 @@
     padding-right: 20px;
 }
 
+.vector {
+    text-align: right;
+    font-size: 1.6rem;
+    margin-right: 20px;
+    color: #6e6e6e;
+    padding-bottom: 20px;
+    padding-right: 20px;
+}
+
+.vector a {
+    color: inherit;
+    text-decoration: none;
+}
+
 .App {
     background: #69a0a3;
     height: 100vh;

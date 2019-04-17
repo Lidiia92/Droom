@@ -8,9 +8,11 @@ exports.typeDefs =`
         state: String
         city: String
         avatar: String
+        aboutYou: String
     }
 
     type UserSkills {
+        interests: [String]
         jobInterests: [String]
         skills: [String]
     }

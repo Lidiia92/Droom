@@ -2,6 +2,111 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const bcrypt = require('bcrypt');
 
+const UserPersonalInfo = new Schema({
+
+        firstName: {
+            type: String,
+            default: "" 
+        },
+
+        lasName: {
+            type: String,
+            default: ""
+        },
+
+        DOB: {
+            type: Date,
+            default: Date.now
+        }, 
+
+        state: {
+            type: String,
+            default: ""
+        },
+
+        city: {
+            type: String,
+            default: ""
+        }, 
+
+        avatar: {
+            type: String,
+            default: ""
+        },
+
+        aboutYou: {
+            type: String,
+            default: ""
+        }
+});
+
+const UserSkills = new Schema({
+
+    interests: {
+        type: [String],
+        default: [""]
+    },
+    jobInterests: {
+        type: [String],
+        default: [""]
+    },
+
+    skills: {
+        type: [String],
+        default: [""]
+    }
+});
+
+const UserEducation = new Schema({
+    schoolName: {
+        type: String,
+        default: ""
+    },
+
+    degree: {
+        type: String,
+        default: ""
+    },
+
+    field: {
+        type: String,
+        default: ""
+    },
+
+    from: {
+        type: String,
+        default: ""
+    },
+
+    to: {
+        type: String,
+        default: ""
+    }
+});
+
+const UserExperience = new Schema({
+    companyName: {
+        type: String,
+        default: ""
+    },
+
+    title: {
+        type: String,
+        default: ""
+    },
+
+    from: {
+        type: String,
+        default: ""
+    },
+
+    to: {
+        type: String,
+        default: ""
+    }
+});
+
+
 const UserSchema = new Schema({
 
     _id: {
@@ -37,111 +142,26 @@ const UserSchema = new Schema({
         default: "employee"
     },
 
-    personalInfo: [
-        
-        {
+    personalInfo: {
+        type: [UserPersonalInfo],
+        default: [UserPersonalInfo]
+    },
 
-        firstName: {
-            type: String,
-            default: "" 
-        },
+    userSkills: {
+        type: [UserSkills],
+        default: [UserSkills]
+    },
 
-        lasName: {
-            type: String,
-            default: ""
-        },
+    education: {
+        type: [UserEducation],
+        default: [UserEducation]
+    },
 
-        DOB: {
-            type: Date,
-            default: Date.now
-        }, 
 
-        state: {
-            type: String,
-            default: ""
-        },
-
-        city: {
-            type: String,
-            default: ""
-        }, 
-
-        avatar: {
-            type: String,
-            default: ""
-        },
+    experience: {
+        type: [UserExperience],
+        default: [UserExperience]
     }
-
-    ],
-
-    userSkills: [
-        {
-            jobInterests: {
-                type: [String],
-                default: [""]
-            },
-
-            skills: {
-                type: [String],
-                default: [""]
-            }
-        }
-    ],
-
-    education: [
-
-        {
-            schoolName: {
-                type: String,
-                default: ""
-            },
-
-            degree: {
-                type: String,
-                default: ""
-            },
-
-            field: {
-                type: String,
-                default: ""
-            },
-
-            from: {
-                type: String,
-                default: ""
-            },
-
-            to: {
-                type: String,
-                default: ""
-            }
-        }
-    ],
-
-    experience: [
-        {
-            companyName: {
-                type: String,
-                default: ""
-            },
-
-            title: {
-                type: String,
-                default: ""
-            },
-
-            from: {
-                type: String,
-                default: ""
-            },
-
-            to: {
-                type: String,
-                default: ""
-            }
-        }
-    ]
- 
 
 });
 

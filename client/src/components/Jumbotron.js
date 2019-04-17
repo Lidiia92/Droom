@@ -27,6 +27,9 @@ const Jumbotron = () => {
             </div>
 
             <footer className="footer">© Nothing Fancy Inc 2019</footer>
+            <div className="vector">
+                <a  href="https://www.freepik.com/free-photos-vectors/background">Background vector created by freepik - www.freepik.com</a>
+            </div>
         </div>
     );
 };
