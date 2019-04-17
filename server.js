@@ -10,8 +10,13 @@ require('dotenv').config({path: 'variables.env'});
 const User = require('./models/User');
 
 //Initializes application
+const corsOptions = {
+    origin: 'http://localhost:3000'
+}
+
 const app = express();
 app.use(bodyParser.json());
+app.use(cors(corsOptions));
 
 const { makeExecutableSchema } = require('graphql-tools');
 
@@ -37,12 +42,6 @@ mongoose
     .then(() => console.log('DB connected'))
     .catch(err => console.error(err));
 
-
-const corsOptions = {
-    origin: 'http://localhost:3000',
-    credentials: true
-}
-app.use(cors(corsOptions));
 
 const PORT = process.env.PORT || 3333;
 

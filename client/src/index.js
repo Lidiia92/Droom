@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import ApolloClient from 'apollo-boost';
+import { ApolloProvider } from 'react-apollo';
 import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom';
 import './index.css';
 
@@ -12,6 +14,11 @@ import { faUser, faSearch, faHandshake, faEyeSlash, faEye, faHandPointUp} from '
 
 library.add(faUser, faSearch, faHandshake, faEyeSlash, faEye, faHandPointUp)
 
+
+const client = new ApolloClient({
+    uri: 'http://localhost:3333/graphql',
+});
+
 const Root = () => (
     <Router>
         <Switch>
@@ -23,5 +30,11 @@ const Root = () => (
 );
 
 
-ReactDOM.render(<Root />, document.getElementById('root'));
+ReactDOM.render(
+
+    <ApolloProvider client={client}>
+            <Root />
+    </ApolloProvider>,
+
+document.getElementById('root'));
 
