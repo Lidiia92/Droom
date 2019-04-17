@@ -1,3 +1,5 @@
+const bcrypt = require('bcrypt');
+
 exports.resolvers = {
     Query: {
         getTestData: () => {
@@ -13,10 +15,12 @@ exports.resolvers = {
                 throw new Error('User already exists');
             }
 
+            const hash = bcrypt.hashSync(args.password, 10);
+
             const newUser = await new User({
                 username: args.username,
                 email: args.email,
-                password: args.password,
+                password: hash,
                 role: args.role
             }).save();
     
