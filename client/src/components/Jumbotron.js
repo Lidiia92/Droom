@@ -12,15 +12,15 @@ const Jumbotron = () => {
                 <div className="cards__wrapper">
                     <div>
                         <div className="card" ><FontAwesomeIcon className="card-svg" icon="user"/></div>
-                        <p className="question">STEP 1: <p>CREATE PROFESSIONAL OR BUSINESS ACCOUNT</p></p>
+                        <p className="question">Step 1: <p>Create professinal or business account.</p></p>
                     </div>
                     <div>
                         <div className="card"><FontAwesomeIcon className="card-svg" icon="search"/></div>
-                        <div className="question">STEP 2: <p>FIND JOBS YOU LIKE</p></div>
+                        <div className="question">Step 2: <p>Find the best jobs near you or find an applicant that is most qialified for the role.</p></div>
                     </div>
                     <div>
                         <div className="card"><FontAwesomeIcon className="card-svg" icon="handshake"/></div>
-                        <div className="question">STEP 3: <p>APPLY WITH ONE CLICK</p></div>
+                        <div className="question">Step 3: <p>Apply to your ideal company or contact the job-seaker with one click.</p></div>
                     </div>
                 </div>
             </div>

@@ -1,6 +1,6 @@
 .heading {
     font-size: 4rem;
-    color: #0073e5;
+    color: #191919;
     text-align: center;
     text-transform: uppercase;
     font-weight: 400;
@@ -54,8 +54,8 @@
 }
 
 .question {
-    color: #0073e5;
-    font-size: 1.9rem;
+    color: #0EBE96;
+    font-size: 1.7rem;
     font-weight: 400;
     margin-top: 20px;
     width: 250px;
