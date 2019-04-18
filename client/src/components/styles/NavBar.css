@@ -13,7 +13,7 @@
 }
 
 .menu__item {
-    color: #dee8e9;
+    color: #e6f8f4;
     font-size: 1.6rem;
     font-weight: 200;
     margin-right: 15px;
@@ -21,7 +21,7 @@
 }
 
 .menu__item:hover {
-    color: #bed2d3;
+    color: #cef2ea;
 }
 
 .link {
