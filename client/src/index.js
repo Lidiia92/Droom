@@ -5,9 +5,9 @@ import { ApolloProvider } from 'react-apollo';
 import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom';
 import './index.css';
 
-import NavBar from './components/NavBar'
 import App from './components/App';
 import Signup from './components/Auth/Signup';
+import PersonalInfo from './components/PersonalInfo';
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faUser, faSearch, faHandshake, faEyeSlash, faEye, faHandPointUp} from '@fortawesome/free-solid-svg-icons'
@@ -24,6 +24,7 @@ const Root = () => (
         <Switch>
             <Route path="/" exact component={App} />
             <Route path="/signup" render={() => <Signup />} />
+            <Route path="/personalinfo" render={(props) => <PersonalInfo {...props}/>} />
             <Redirect to="/" />
         </Switch>
     </Router>

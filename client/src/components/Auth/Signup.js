@@ -37,7 +37,7 @@ const Signup = (props) => {
         setPasswordConfirm("");
         setNewError("");
 
-        props.history.push('/')
+        props.history.push('/personalinfo')
 
     }
 
