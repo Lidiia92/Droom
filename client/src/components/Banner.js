@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import image from '../images/603.jpg';
-import NavBar from '../components/NavBar';
 import AnchorLink from 'react-anchor-link-smooth-scroll'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
@@ -12,10 +10,11 @@ class Banner extends Component {
     return (
       <div className="Banner">
         <div className="banner__content">
+           <div className="banner__img"></div>
            <div className="banner__text">
-            <h1>GREAT CAREER AHEAD</h1>
-            <h3>Looking for a dream job? You came to the right place.</h3>
-            <p>Thousands job opportunities are within one click! <FontAwesomeIcon  className="hand-icon" icon="hand-point-up"/></p>
+                <div>
+                    <h1>Finding your job is our job.</h1>
+                </div>
             <button className="cta">GET STARTED!</button>
             <AnchorLink className="cta cta-green" href='#about'>HOW DOES IT WORK?</AnchorLink>
            </div>

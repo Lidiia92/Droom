@@ -10,9 +10,9 @@ import Signup from './components/Auth/Signup';
 import PersonalInfo from './components/PersonalInfo';
 
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faUser, faSearch, faHandshake, faEyeSlash, faEye, faHandPointUp} from '@fortawesome/free-solid-svg-icons'
+import { faUser, faSearch, faHandshake, faEyeSlash, faEye, faCheck} from '@fortawesome/free-solid-svg-icons'
 
-library.add(faUser, faSearch, faHandshake, faEyeSlash, faEye, faHandPointUp)
+library.add(faUser, faSearch, faHandshake, faEyeSlash, faEye, faCheck)
 
 
 const client = new ApolloClient({

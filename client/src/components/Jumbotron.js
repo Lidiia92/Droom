@@ -8,12 +8,11 @@ const Jumbotron = () => {
     return(
         <div >
             <h2 id="about" className="heading">How does it work?</h2>
-            <h3 className="subheading">Take three easy steps towards your dream job!</h3>
             <div className="cards">
                 <div className="cards__wrapper">
                     <div>
                         <div className="card" ><FontAwesomeIcon className="card-svg" icon="user"/></div>
-                        <p className="question">STEP 1: <p>CREATE AN ACCOUNT</p></p>
+                        <p className="question">STEP 1: <p>CREATE PROFESSIONAL OR BUSINESS ACCOUNT</p></p>
                     </div>
                     <div>
                         <div className="card"><FontAwesomeIcon className="card-svg" icon="search"/></div>
@@ -27,9 +26,6 @@ const Jumbotron = () => {
             </div>
 
             <footer className="footer">© Nothing Fancy Inc 2019</footer>
-            <div className="vector">
-                <a  href="https://www.freepik.com/free-photos-vectors/background">Background vector created by freepik - www.freepik.com</a>
-            </div>
         </div>
     );
 };
