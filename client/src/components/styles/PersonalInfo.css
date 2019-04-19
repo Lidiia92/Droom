@@ -1,7 +1,7 @@
 .main-background {
     background: #0ebe96;
     height: auto;
-    padding: 50px 90px 60px 90px;
+    padding: 50px 11% 60px 11%;
 }
 
 .headings-light {
@@ -33,6 +33,7 @@
 .info__form {
     height: 600px;
     background: #9ee5d5;
+    border-radius: 5px;
 }
 
 .sections {
@@ -56,3 +57,28 @@
     color: #191919;
     border-bottom: 2px solid #191919;
 }
+
+.form__wrapper {
+    width: 70%;
+    margin: 30px auto 0 auto;
+}
+
+.form__wrapper input {
+    padding: 12px 20px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    color: #6e6e6e;
+    background-color: #fff !important;
+}
+
+.input__row {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.input-sm {
+    width: 43%;
+}
+

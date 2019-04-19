@@ -30,6 +30,15 @@ const PersonalInfo = (props) => {
                         Skills & Interests
                     </div>
                 </div>
+
+                <div className="form__wrapper">
+                    <form>
+                        <div className="input__row">
+                            <input className="input-sm" placeholder="First Name"/>
+                            <input className="input-sm" placeholder="Last Name"/>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
 
