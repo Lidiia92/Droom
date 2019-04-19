@@ -37,6 +37,8 @@ const PersonalInfo = (props) => {
                             <input className="input-sm" placeholder="First Name"/>
                             <input className="input-sm" placeholder="Last Name"/>
                         </div>
+
+                        
                     </form>
                 </div>
             </div>
