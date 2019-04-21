@@ -29,6 +29,9 @@ const PersonalInfo = (props) => {
 
     }
 
+    const errorStyle = {
+        background: '#ffd1d1',
+    };
 
     //console.log(personalInfo);
     return (
@@ -71,11 +74,12 @@ const PersonalInfo = (props) => {
                                 decrementcounter(e);
                             }}
                                 value={personalInfo.aboutYou} 
+                                style={counter === 0 ? errorStyle : {}}
                                 className="input-lg" rows="3" maxLength="180" placeholder="Tell us about yourself"/>
                         </div>
 
                         <p className="counter" >
-                            {counter} character{ending} remaining. 
+                            {counter} character{ending} left 
                         </p>
 
 
