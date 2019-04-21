@@ -1,16 +1,38 @@
 import React, { useState } from 'react';
 import {Link} from 'react-router-dom';
+import Pluralize from 'react-pluralize';
 
 import './styles/PersonalInfo.css';
 
 const PersonalInfo = (props) => {
 
     const [counter, setCounter] = useState(180);
+    const [ending, setEnding] = useState("s");
 
-    function decrementcounter() {
+    function decrementcounter(e) {
         
-        if (counter === 0) return;
-        setCounter(counter - 1)
+        if(e.keyCode  === 8 && counter < 180) {
+            setCounter(counter + 1);
+            pluralize(counter+1);
+        } else if (e.keyCode !== 8 && counter !== 0){
+            setCounter(counter - 1);
+            pluralize(counter-1);
+        }
+
+    }
+
+    function pluralize(counter) {
+        const countArray = counter.toString().split('');
+        console.log(countArray);
+        if(counter === 1) {
+            setEnding("");
+        }
+  
+        if (countArray.length === 2 || countArray.length === 3 && countArray[1] == 1 || countArray[2] == 1) {
+            setEnding("");
+        } else {
+            setEnding("s");
+        }
     }
 
     return (
@@ -47,11 +69,11 @@ const PersonalInfo = (props) => {
                         </div>
 
                         <div className="input__row">
-                            <textarea onKeyDown={() => decrementcounter()}className="input-lg" rows="3" maxlength="180" placeholder="Tell us about yourself"/>
+                            <textarea onKeyDown={(e) => decrementcounter(e)}className="input-lg" rows="3" maxLength="180" placeholder="Tell us about yourself"/>
                         </div>
 
-                        <p className="counter">
-                            {counter} charater(s) remaining.
+                        <p className="counter" >
+                            {counter} character{ending} remaining. 
                         </p>
 
 
