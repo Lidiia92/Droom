@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+
 import {Link} from 'react-router-dom';
 import './styles/PersonalInfo.css';
+
 
 
 const PersonalInfo = (props) => {
@@ -8,7 +12,8 @@ const PersonalInfo = (props) => {
     const [counter, setCounter] = useState(180);
     const [ending, setEnding] = useState("s");
     const [personalInfo, setPersonalInfo] = useState({
-        aboutYou: ""
+        aboutYou: "",
+        DOB: new Date()
     });
 
     function decrementcounter(e) {
@@ -33,7 +38,7 @@ const PersonalInfo = (props) => {
         background: '#ffd1d1',
     };
 
-    //console.log(personalInfo);
+    console.log(personalInfo);
     return (
 
         
@@ -70,7 +75,7 @@ const PersonalInfo = (props) => {
 
                         <div className="input__row">
                             <textarea onChange={(e) => {
-                                setPersonalInfo({aboutYou: e.target.value});
+                                setPersonalInfo({...personalInfo, aboutYou: e.target.value});
                                 decrementcounter(e);
                             }}
                                 value={personalInfo.aboutYou} 
@@ -82,6 +87,13 @@ const PersonalInfo = (props) => {
                             {counter} character{ending} left 
                         </p>
 
+                        
+                        <div className="input__row">
+                            <DatePicker className="calendar"
+                                selected={personalInfo.DOB}
+                                onChange={(e) => setPersonalInfo({...personalInfo, DOB: e})}
+                            />
+                        </div>
 
                     </form>
                 </div>
