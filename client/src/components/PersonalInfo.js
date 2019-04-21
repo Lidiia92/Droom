@@ -3,34 +3,32 @@ import {Link} from 'react-router-dom';
 import Pluralize from 'react-pluralize';
 
 import './styles/PersonalInfo.css';
+import { pluralize } from 'mongoose';
 
 const PersonalInfo = (props) => {
 
     const [counter, setCounter] = useState(180);
     const [ending, setEnding] = useState("s");
+    const [personalInfo, setPersonalInfo] = useState("")
 
     function decrementcounter(e) {
         
-        if(e.keyCode  === 8 && counter < 180) {
-            setCounter(counter + 1);
-            pluralize(counter+1);
-        } else if (e.keyCode !== 8 && counter !== 0){
-            setCounter(counter - 1);
-            pluralize(counter-1);
-        }
+        setCounter(180 - e.target.value.length);
+        pluralize(180 - e.target.value.length);
+
 
     }
 
     function pluralize(counter) {
-        const countString = counter.toString();
 
-       if(countString === "1") {
+       if(counter ===  1 ) {
             setEnding("");
         } else {
             setEnding("s");
         }
 
     }
+
 
     return (
         
@@ -66,7 +64,14 @@ const PersonalInfo = (props) => {
                         </div>
 
                         <div className="input__row">
-                            <textarea onKeyDown={(e) => decrementcounter(e)}className="input-lg" rows="3" maxLength="180" placeholder="Tell us about yourself"/>
+                            <textarea onChange={(e) => {
+                                setPersonalInfo(e.target.value);
+                                decrementcounter(e);
+                                // console.log('target', e.target.value, "counter", counter, "about you", personalInfo);
+                            }}
+                                value={personalInfo} 
+                                // onKeyDown={(e) => decrementcounter(e)} 
+                                className="input-lg" rows="3" maxLength="180" placeholder="Tell us about yourself"/>
                         </div>
 
                         <p className="counter" >
