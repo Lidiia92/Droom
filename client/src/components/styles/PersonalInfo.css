@@ -79,6 +79,7 @@
     justify-content: space-between;
 }
 
+
 .input-lg {
     width: 100%;
 }
@@ -157,3 +158,31 @@
 .react-datepicker__day--selected:hover {
     background: #9ee5d5;
 }
+
+
+.upload {
+    background: white;
+
+}
+
+.label {
+    display: flex;
+    flex-direction: column;
+}
+
+.label--flex {
+    width: 60%;
+}
+
+.label-wide {
+    width: 60%;
+}
+
+.label-wide .upload{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+
+
+

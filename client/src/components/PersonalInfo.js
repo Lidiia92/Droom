@@ -87,12 +87,25 @@ const PersonalInfo = (props) => {
                             {counter} character{ending} left 
                         </p>
 
-                        
                         <div className="input__row">
-                            <DatePicker className="calendar"
+                            <div for="" className="label">
+                                <label for="" className="label">Select Your Date of Birth</label>
+                                <DatePicker 
                                 selected={personalInfo.DOB}
                                 onChange={(e) => setPersonalInfo({...personalInfo, DOB: e})}
-                            />
+                                />
+                            </div>
+
+                            <div for="" className="label label-wide">
+                                <label for="file-upload" className="label file-upload">Upload Your Photo</label>
+                                <input id="file-upload" type="file" className="upload"/>
+                            </div>
+
+                        </div>
+                        
+                        <div className="input__row">
+
+    
                         </div>
 
                     </form>
