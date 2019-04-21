@@ -5,6 +5,14 @@ import './styles/PersonalInfo.css';
 
 const PersonalInfo = (props) => {
 
+    const [counter, setCounter] = useState(180);
+
+    function decrementcounter() {
+        
+        if (counter === 0) return;
+        setCounter(counter - 1)
+    }
+
     return (
         
         <div className="main-background">
@@ -38,7 +46,15 @@ const PersonalInfo = (props) => {
                             <input className="input-sm" placeholder="Last Name"/>
                         </div>
 
-                        
+                        <div className="input__row">
+                            <textarea onKeyDown={() => decrementcounter()}className="input-lg" rows="3" maxlength="180" placeholder="Tell us about yourself"/>
+                        </div>
+
+                        <p className="counter">
+                            {counter} charater(s) remaining.
+                        </p>
+
+
                     </form>
                 </div>
             </div>
