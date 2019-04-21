@@ -23,19 +23,8 @@ const PersonalInfo = (props) => {
 
     function pluralize(counter) {
         const countString = counter.toString();
-        const countArray = countString.split('');
-        console.log(countArray);
 
-
-        if(countArray.length === 3 && countArray[2] == 1) {
-            if(countString !== "111") {
-                setEnding("");
-            }
-        } else if (countArray.length === 2 && countArray[1] == 1) {
-            if(countString !== "11") {
-                setEnding("");
-            }
-        } else if(countString === "1") {
+       if(countString === "1") {
             setEnding("");
         } else {
             setEnding("s");
