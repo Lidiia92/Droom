@@ -22,17 +22,25 @@ const PersonalInfo = (props) => {
     }
 
     function pluralize(counter) {
-        const countArray = counter.toString().split('');
+        const countString = counter.toString();
+        const countArray = countString.split('');
         console.log(countArray);
-        if(counter === 1) {
-            setEnding("");
-        }
-  
-        if (countArray.length === 2 || countArray.length === 3 && countArray[1] == 1 || countArray[2] == 1) {
+
+
+        if(countArray.length === 3 && countArray[2] == 1) {
+            if(countString !== "111") {
+                setEnding("");
+            }
+        } else if (countArray.length === 2 && countArray[1] == 1) {
+            if(countString !== "11") {
+                setEnding("");
+            }
+        } else if(countString === "1") {
             setEnding("");
         } else {
             setEnding("s");
         }
+
     }
 
     return (
