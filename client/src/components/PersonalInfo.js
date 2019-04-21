@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import {Link} from 'react-router-dom';
-import Pluralize from 'react-pluralize';
-
 import './styles/PersonalInfo.css';
-import { pluralize } from 'mongoose';
+
 
 const PersonalInfo = (props) => {
 
     const [counter, setCounter] = useState(180);
     const [ending, setEnding] = useState("s");
-    const [personalInfo, setPersonalInfo] = useState("")
+    const [personalInfo, setPersonalInfo] = useState({
+        aboutYou: ""
+    });
 
     function decrementcounter(e) {
         
@@ -30,7 +30,9 @@ const PersonalInfo = (props) => {
     }
 
 
+    //console.log(personalInfo);
     return (
+
         
         <div className="main-background">
             <div className="headings-light">
@@ -65,12 +67,10 @@ const PersonalInfo = (props) => {
 
                         <div className="input__row">
                             <textarea onChange={(e) => {
-                                setPersonalInfo(e.target.value);
+                                setPersonalInfo({aboutYou: e.target.value});
                                 decrementcounter(e);
-                                // console.log('target', e.target.value, "counter", counter, "about you", personalInfo);
                             }}
-                                value={personalInfo} 
-                                // onKeyDown={(e) => decrementcounter(e)} 
+                                value={personalInfo.aboutYou} 
                                 className="input-lg" rows="3" maxLength="180" placeholder="Tell us about yourself"/>
                         </div>
 
