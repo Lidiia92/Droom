@@ -14,9 +14,12 @@ const PersonalInfo = (props) => {
     const [counter, setCounter] = useState(180);
     const [ending, setEnding] = useState("s");
     const [personalInfo, setPersonalInfo] = useState({
+        firstName: "",
+        lastName: "",
         aboutYou: "",
         DOB: new Date(),
-        avatar: {}
+        avatar: {},
+        city: ""
     });
 
     function decrementcounter(e) {
@@ -56,7 +59,7 @@ const PersonalInfo = (props) => {
         return files[0];
     }
 
-    console.log(personalInfo);
+    //console.log(personalInfo);
     return (
 
         
@@ -87,8 +90,8 @@ const PersonalInfo = (props) => {
                 <div className="form__wrapper">
                     <form>
                         <div className="input__row">
-                            <input className="input-sm" placeholder="First Name"/>
-                            <input className="input-sm" placeholder="Last Name"/>
+                            <input className="input-sm" placeholder="First Name" value={personalInfo.firstName} onChange={(e) => setPersonalInfo({...personalInfo, firstName: e.target.value})}/>
+                            <input className="input-sm" placeholder="Last Name" value={personalInfo.lastName} onChange={(e) => setPersonalInfo({...personalInfo, lastName: e.target.value})}/>
                         </div>
 
                         <div className="input__row">
@@ -127,17 +130,19 @@ const PersonalInfo = (props) => {
 
                             <div  className="label">
                                 <label htmlFor="city" className="label">Your Town/City</label>
-                                <input id="city" type="text" />  
+                                <input id="city" type="text" value={personalInfo.city} 
+                                       onChange={(e) => setPersonalInfo({...personalInfo, city: e.target.value})}/>  
                             </div>
 
                             <div  className="label label-wide">
                                 <label htmlFor="select" className="label file-upload">Select Your State</label>
-                                <select id="select">
+                                <select id="select" onChange={(e) => setPersonalInfo({...personalInfo, state: e.target.value})}>
                                 {states.map(state => <option key={state.abbreviation}>{state.name}</option>)}
                                 </select>
                             </div>
                         </div>
 
+                    <p className="button-align"><button className="button" type="submit">Next</button></p>
                     </form>
                 </div>
             </div>
