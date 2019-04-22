@@ -5,6 +5,8 @@ import "react-datepicker/dist/react-datepicker.css";
 import {Link} from 'react-router-dom';
 import './styles/PersonalInfo.css';
 
+import states from '../components/Data/states';
+
 
 
 const PersonalInfo = (props) => {
@@ -13,7 +15,8 @@ const PersonalInfo = (props) => {
     const [ending, setEnding] = useState("s");
     const [personalInfo, setPersonalInfo] = useState({
         aboutYou: "",
-        DOB: new Date()
+        DOB: new Date(),
+        avatar: {}
     });
 
     function decrementcounter(e) {
@@ -37,6 +40,21 @@ const PersonalInfo = (props) => {
     const errorStyle = {
         background: '#ffd1d1',
     };
+
+    function uploader(e) {
+        const files = Array.from(e.target.files)
+    
+        const formData = new FormData()
+    
+        
+        files.forEach((file, i) => {
+          formData.append(i, file)
+        });
+
+        console.log(files[0]);
+
+        return files[0];
+    }
 
     console.log(personalInfo);
     return (
@@ -88,24 +106,36 @@ const PersonalInfo = (props) => {
                         </p>
 
                         <div className="input__row">
-                            <div for="" className="label">
-                                <label for="" className="label">Select Your Date of Birth</label>
+                            <div  className="label">
+                                <label htmlFor="date-picker" className="label">Select Your Date of Birth</label>
                                 <DatePicker 
+                                id="date-picker"
                                 selected={personalInfo.DOB}
                                 onChange={(e) => setPersonalInfo({...personalInfo, DOB: e})}
                                 />
                             </div>
 
-                            <div for="" className="label label-wide">
+                            <div className="label label-wide">
                                 <label for="file-upload" className="label file-upload">Upload Your Photo</label>
-                                <input id="file-upload" type="file" className="upload"/>
+                                <input id="file-upload" type="file" className="upload" 
+                                onChange={(e) => setPersonalInfo({...personalInfo, avatar: uploader(e)})}/>
                             </div>
 
                         </div>
                         
                         <div className="input__row">
 
-    
+                            <div  className="label">
+                                <label htmlFor="city" className="label">Your Town/City</label>
+                                <input id="city" type="text" />  
+                            </div>
+
+                            <div  className="label label-wide">
+                                <label htmlFor="select" className="label file-upload">Select Your State</label>
+                                <select id="select">
+                                {states.map(state => <option key={state.abbreviation}>{state.name}</option>)}
+                                </select>
+                            </div>
                         </div>
 
                     </form>

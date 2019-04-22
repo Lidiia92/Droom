@@ -63,7 +63,7 @@
     margin: 30px auto 0 auto;
 }
 
-.form__wrapper input, textarea{
+.form__wrapper input, textarea, select{
     padding: 12px 20px;
     margin: 8px 0;
     border: 1px solid #ccc;
@@ -203,6 +203,7 @@
     cursor: pointer;
   }
 
-
-
-
+#select {
+    padding-top: 11px;
+    padding-bottom: 11px;
+}
