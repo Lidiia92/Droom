@@ -16,7 +16,7 @@ library.add(faUser, faSearch, faHandshake, faEyeSlash, faEye, faCheck)
 
 
 const client = new ApolloClient({
-    uri: 'http://localhost:3333/graphql',
+    uri: 'http://localhost:3333/graphql'
 });
 
 const Root = () => (

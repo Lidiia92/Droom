@@ -1,0 +1,11 @@
+.draggable {
+    padding: 12px 20px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    color: #6e6e6e;
+    background: white;
+    font-family: 'Roboto', sans-serif;
+    width: 300px;
+    height: 300px;
+}

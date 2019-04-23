@@ -34,6 +34,11 @@ exports.resolvers = {
             return {token: token, uid: newUser._id};
         },
 
+        uploadFile: async (root, args) => {
+            console.log(args.file);
+            return true;
+        }
+
     }
 
 }

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import DatePicker from "react-datepicker";
+import Drop from './Dropzone';
 import "react-datepicker/dist/react-datepicker.css";
 
 import {Link} from 'react-router-dom';
@@ -59,7 +60,11 @@ const PersonalInfo = (props) => {
         return files[0];
     }
 
-    //console.log(personalInfo);
+    function onDrop(file) {
+        setPersonalInfo({...personalInfo, avatar: file})
+    }
+
+    console.log(personalInfo);
     return (
 
         
@@ -146,6 +151,8 @@ const PersonalInfo = (props) => {
                     </form>
                 </div>
             </div>
+
+            <Drop onDrop={onDrop}/>
         </div>
 
     );

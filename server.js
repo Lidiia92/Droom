@@ -1,11 +1,13 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const graphqlHTTP = require('express-graphql');
+const {apolloUploadExpress} = require('apollo-upload-server');
 const {typeDefs} = require ('./schema');
 const {resolvers} = require ('./resolvers');
 const mongoose = require('mongoose');
 const cors = require('cors');
 require('dotenv').config({path: 'variables.env'});
+
 
 const User = require('./models/User');
 
@@ -27,7 +29,7 @@ const schema = makeExecutableSchema({
 });
 
 
-app.use('/graphql', graphqlHTTP({
+app.use('/graphql', apolloUploadExpress({uploadDir: "./uploads"}), graphqlHTTP({
     schema: schema,
     rootValue: resolvers,
     context: {
