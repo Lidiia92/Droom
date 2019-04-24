@@ -43,14 +43,14 @@ function Drop(props) {
       {
         isDragActive ?
           <div className="draggable">
-            <p className="draggable-p mg-bottom">Drop the files here ...</p>
-            {avatar ? <p>{avatar.name}</p> : <p ><FontAwesomeIcon className="image-upload" icon="image"/></p>}
-            <button onClick={(e) => {e.stopPropagation(); setAvatar("")}}>Cancel</button>
+            <p className="draggable-p">Drop the files here ...</p>
+            {avatar ? <p ><FontAwesomeIcon className="image-upload upload-success" icon="check-square"/></p> : <p ><FontAwesomeIcon className="image-upload" icon="image"/></p>}
+            <button className="btn-cancel" onClick={(e) => {e.stopPropagation(); setAvatar("")}}>Cancel</button>
           </div> :
           <div  className="draggable" >
-            <p className="draggable-p">Drag 'n' drop some files here, or click to select files</p>
-            {avatar ? <p>{avatar.name}</p> : <p><FontAwesomeIcon  className="image-upload" icon="image"/></p>}
-            <button onClick={(e) => {e.stopPropagation(); setAvatar("")}}>Cancel</button>
+            <p className="draggable-p">Drag 'n' drop image here, or click to select</p>
+            {avatar ? <p ><FontAwesomeIcon className="image-upload upload-success" icon="check-square"/></p> : <p><FontAwesomeIcon  className="image-upload" icon="image"/></p>}
+            <button className="btn-cancel" onClick={(e) => {e.stopPropagation(); setAvatar("")}}>Cancel</button>
         </div>
       }
 

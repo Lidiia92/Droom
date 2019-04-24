@@ -8,6 +8,7 @@
     font-family: 'Roboto', sans-serif;
     width: 300px;
     height: 300px;
+    cursor: pointer;
 }
 
 .dropzone, .dropzone:active, .dropzone:focus {
@@ -23,7 +24,11 @@
 }
 
 p .image-upload {
-    border: 2px solid red;
+    border: 2px dashed #e2e2e2;
+}
+
+p .upload-success {
+    border: 2px dashed #9ee5d5;
 }
 .image-upload {
     color: #e2e2e2;
@@ -34,6 +39,22 @@ p .image-upload {
 
 }
 
-.mg-bottom {
-    margin-bottom: 32.5px;
+.btn-cancel {
+    background: #ff6666;
+    padding-left: 30px;
+    padding-right: 30px;
+    cursor: pointer;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 18px;
+    display: block;
+    outline: none;
+}
+
+.btn-cancel:hover {
+    background: #e55b5b;
+}
+
+.upload-success {
+    color: #9ee5d5;
 }
