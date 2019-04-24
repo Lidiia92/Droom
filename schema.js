@@ -54,8 +54,15 @@ exports.typeDefs =`
     input Upload {
         name: String!
         type: String!
-        site: Int!
+        size: Int!
         path: String!
+    }
+
+    type File {
+        name: String
+        type: String
+        size: Int
+        path: String
     }
 
     type Query {

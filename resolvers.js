@@ -35,7 +35,7 @@ exports.resolvers = {
         },
 
         uploadFile: async (root, args) => {
-            console.log(args.file);
+            await console.log('args', args.file);
             return true;
         }
 

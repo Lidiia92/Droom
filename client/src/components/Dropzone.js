@@ -21,6 +21,8 @@
 // export default graphql(UPLOAD_FILE)(Drop);
 
 import React, {useCallback, useState} from 'react';
+import {Mutation} from 'react-apollo';
+import {UPLOAD_FILE} from '../queries/index';
 import {useDropzone} from 'react-dropzone';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
@@ -28,33 +30,53 @@ import './styles/Dropzone.css';
 
 function Drop(props) {
   
-  const [avatar, setAvatar] = useState("");
+  const [avatar, setAvatar] = useState({
+      name: "",
+      type: "",
+      size: 0,
+      path: ""
+  });
+
+  const emptyAvatar = {
+    name: "",
+    type: "",
+    size: 0,
+    path: ""
+  }
 
   const onDrop = useCallback(acceptedFiles => {
-    props.onDrop(acceptedFiles[0]);
-    setAvatar(acceptedFiles[0]);
+      setAvatar(acceptedFiles[0]);
+      props.onDrop(acceptedFiles[0]);
   }, [])
   const {getRootProps, getInputProps, isDragActive} = useDropzone({onDrop})
 
-  console.log(avatar);
+  
   return (
-    <div className="dropzone" {...getRootProps()}>
-      <input {...getInputProps()} />
-      {
-        isDragActive ?
-          <div className="draggable">
-            <p className="draggable-p">Drop the files here ...</p>
-            {avatar ? <p ><FontAwesomeIcon className="image-upload upload-success" icon="check-square"/></p> : <p ><FontAwesomeIcon className="image-upload" icon="image"/></p>}
-            <button className="btn-cancel" onClick={(e) => {e.stopPropagation(); setAvatar("")}}>Cancel</button>
-          </div> :
-          <div  className="draggable" >
-            <p className="draggable-p">Drag 'n' drop image here, or click to select</p>
-            {avatar ? <p ><FontAwesomeIcon className="image-upload upload-success" icon="check-square"/></p> : <p><FontAwesomeIcon  className="image-upload" icon="image"/></p>}
-            <button className="btn-cancel" onClick={(e) => {e.stopPropagation(); setAvatar("")}}>Cancel</button>
-        </div>
-      }
+    <Mutation mutation={UPLOAD_FILE} >
 
-    </div>
+        {(uploadFile, {data, loading, error}) => {
+            return (
+                <div className="dropzone" {...getRootProps()} onChange={() => uploadFile({variables: {file: {...avatar}}})}>
+                <input {...getInputProps()} />
+                {
+                    isDragActive ?
+                    <div className="draggable">
+                        <p className="draggable-p">Drop the files here ...</p>
+                        {avatar.name ? <p ><FontAwesomeIcon className="image-upload upload-success" icon="check-square"/></p> : <p ><FontAwesomeIcon className="image-upload" icon="image"/></p>}
+                        <button className="btn-cancel" onClick={(e) => {e.stopPropagation(); e.preventDefault(); setAvatar(emptyAvatar)}}>Cancel</button>
+                    </div> :
+                    <div  className="draggable" >
+                        <p className="draggable-p">Drag 'n' drop image here, or click to select</p>
+                        {avatar.name  ? <p ><FontAwesomeIcon className="image-upload upload-success" icon="check-square"/></p> : <p><FontAwesomeIcon  className="image-upload" icon="image"/></p>}
+                        <button className="btn-cancel" onClick={(e) => {e.stopPropagation(); e.preventDefault(); setAvatar(emptyAvatar)}}>Cancel</button>
+                    </div>
+                }
+
+                </div>
+
+            );
+        }}
+    </Mutation>
   )
 }
 

@@ -138,15 +138,13 @@ const PersonalInfo = (props) => {
 
                         </div>
 
-                            {/* <div className="label label-wide">
-                                <label for="file-upload" className="label file-upload">Upload Your Photo</label>
-                                <input id="file-upload" type="file" className="upload" 
-                                onChange={(e) => setPersonalInfo({...personalInfo, avatar: uploader(e)})}/>
-                            </div> */}
-
                         
                         <div className="input__row">
-                            <Drop onDrop={onDrop}/>
+                            
+                            <div className="label">
+                                <label htmlFor="file-upload" className="label file-upload">Upload Your Photo</label>
+                                <Drop onDrop={onDrop}/>
+                            </div>
 
                         </div>
 
