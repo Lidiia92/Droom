@@ -20,8 +20,9 @@
 
 // export default graphql(UPLOAD_FILE)(Drop);
 
-import React, {useCallback, useState} from 'react'
-import {useDropzone} from 'react-dropzone'
+import React, {useCallback, useState} from 'react';
+import {useDropzone} from 'react-dropzone';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import './styles/Dropzone.css';
 
@@ -42,13 +43,13 @@ function Drop(props) {
       {
         isDragActive ?
           <div className="draggable">
-            <p>Drop the files here ...</p>
-            {avatar ? <p>{avatar.name}</p> : ""}
+            <p className="draggable-p mg-bottom">Drop the files here ...</p>
+            {avatar ? <p>{avatar.name}</p> : <p ><FontAwesomeIcon className="image-upload" icon="image"/></p>}
             <button onClick={(e) => {e.stopPropagation(); setAvatar("")}}>Cancel</button>
           </div> :
           <div  className="draggable" >
-            <p>Drag 'n' drop some files here, or click to select files</p>
-            {avatar ? <p>{avatar.name}</p> : ""}
+            <p className="draggable-p">Drag 'n' drop some files here, or click to select files</p>
+            {avatar ? <p>{avatar.name}</p> : <p><FontAwesomeIcon  className="image-upload" icon="image"/></p>}
             <button onClick={(e) => {e.stopPropagation(); setAvatar("")}}>Cancel</button>
         </div>
       }

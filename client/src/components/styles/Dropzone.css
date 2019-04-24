@@ -13,3 +13,27 @@
 .dropzone, .dropzone:active, .dropzone:focus {
     outline: none;
 }
+
+.draggable-p {
+    color: #6e6e6e;
+    font-size: 1.5rem;
+    font-weight: 400;
+    text-align: center;
+    
+}
+
+p .image-upload {
+    border: 2px solid red;
+}
+.image-upload {
+    color: #e2e2e2;
+    display: block;
+    margin: 0 auto;
+    font-size: 14rem;
+    padding: 20px 70px;
+
+}
+
+.mg-bottom {
+    margin-bottom: 32.5px;
+}
