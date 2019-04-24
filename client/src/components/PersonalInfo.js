@@ -114,7 +114,7 @@ const PersonalInfo = (props) => {
                         </p>
 
                         <div className="input__row">
-                            <div  className="label">
+                            <div  className="label ">
                                 <label htmlFor="date-picker" className="label">Select Your Date of Birth</label>
                                 <DatePicker 
                                 id="date-picker"
@@ -123,20 +123,10 @@ const PersonalInfo = (props) => {
                                 />
                             </div>
 
-                            <div className="label label-wide">
-                                <label for="file-upload" className="label file-upload">Upload Your Photo</label>
-                                <input id="file-upload" type="file" className="upload" 
-                                onChange={(e) => setPersonalInfo({...personalInfo, avatar: uploader(e)})}/>
-                            </div>
-
-                        </div>
-                        
-                        <div className="input__row">
-
-                            <div  className="label">
+                            <div  className="label ">
                                 <label htmlFor="city" className="label">Your Town/City</label>
                                 <input id="city" type="text" value={personalInfo.city} 
-                                       onChange={(e) => setPersonalInfo({...personalInfo, city: e.target.value})}/>  
+                                    onChange={(e) => setPersonalInfo({...personalInfo, city: e.target.value})}/>  
                             </div>
 
                             <div  className="label label-wide">
@@ -145,6 +135,19 @@ const PersonalInfo = (props) => {
                                 {states.map(state => <option key={state.abbreviation}>{state.name}</option>)}
                                 </select>
                             </div>
+
+                        </div>
+
+                            {/* <div className="label label-wide">
+                                <label for="file-upload" className="label file-upload">Upload Your Photo</label>
+                                <input id="file-upload" type="file" className="upload" 
+                                onChange={(e) => setPersonalInfo({...personalInfo, avatar: uploader(e)})}/>
+                            </div> */}
+
+                        
+                        <div className="input__row">
+                            <Drop onDrop={onDrop}/>
+
                         </div>
 
                     <p className="button-align"><button className="button" type="submit">Next</button></p>
@@ -152,7 +155,6 @@ const PersonalInfo = (props) => {
                 </div>
             </div>
 
-            <Drop onDrop={onDrop}/>
         </div>
 
     );
