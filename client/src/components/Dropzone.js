@@ -20,33 +20,39 @@
 
 // export default graphql(UPLOAD_FILE)(Drop);
 
-import React, {useCallback} from 'react'
+import React, {useCallback, useState} from 'react'
 import {useDropzone} from 'react-dropzone'
 
 import './styles/Dropzone.css';
 
 function Drop(props) {
   
-  let avatar;
+  const [avatar, setAvatar] = useState("");
+
   const onDrop = useCallback(acceptedFiles => {
     props.onDrop(acceptedFiles[0]);
-    avatar = acceptedFiles[0];
-    //console.log(avatar);
-    return avatar;
+    setAvatar(acceptedFiles[0]);
   }, [])
   const {getRootProps, getInputProps, isDragActive} = useDropzone({onDrop})
 
-  //console.log(avatar);
+  console.log(avatar);
   return (
-    <div {...getRootProps()}>
+    <div className="dropzone" {...getRootProps()}>
       <input {...getInputProps()} />
       {
         isDragActive ?
-          <p className="draggable">Drop the files here ...</p> :
-          <p  className="draggable" >Drag 'n' drop some files here, or click to select files</p>
+          <div className="draggable">
+            <p>Drop the files here ...</p>
+            {avatar ? <p>{avatar.name}</p> : ""}
+            <button onClick={(e) => {e.stopPropagation(); setAvatar("")}}>Cancel</button>
+          </div> :
+          <div  className="draggable" >
+            <p>Drag 'n' drop some files here, or click to select files</p>
+            {avatar ? <p>{avatar.name}</p> : ""}
+            <button onClick={(e) => {e.stopPropagation(); setAvatar("")}}>Cancel</button>
+        </div>
       }
 
-      {avatar ? <p>{avatar.name}</p> : ""}
     </div>
   )
 }
