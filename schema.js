@@ -51,6 +51,12 @@ exports.typeDefs =`
         uid: String
     }
 
+    scalar Date
+
+    type DateType {
+    created: Date
+    }
+
     type Query {
         getCurrentUser: User 
         getTestData: String
@@ -58,7 +64,7 @@ exports.typeDefs =`
 
     type Mutation {
         signupUser(username: String!, email: String!, password: String!, role: String): Token
-
+        updateUserPersonalInfo(_id: String!, firstName: String, lastName: String, DOB: String, state: String, avatar: String, aboutYou: String): String
     }
 
 `;

@@ -66,7 +66,7 @@ const PersonalInfo = (props) => {
         setPersonalInfo({...personalInfo, avatar: file})
     }
 
-    //console.log(personalInfo);
+    
     return (
 
         

@@ -1,3 +1,5 @@
+const GraphQLScalarType = require ('graphql');
+const Kind = require('graphql/language');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
@@ -34,6 +36,27 @@ exports.resolvers = {
             return {token: token, uid: newUser._id};
         },
 
-    }
+        updateUserPersonalInfo: async (root, args, {User}) => {
+            const userForCheck = await User.findOne({_id: args._id});
+            if(!userForCheck) {
+                throw new Error('User with provided id was not found');
+            }
+
+            userForCheck.personalInfo[0].firstName = args.firstName;
+            userForCheck.personalInfo[0].lastName = args.lastName;
+            userForCheck.personalInfo[0].DOB = args.DOB;
+            userForCheck.personalInfo[0].state = args.state;
+            userForCheck.personalInfo[0].city = args.city;
+            userForCheck.personalInfo[0].avatar = args.avatar;
+            userForCheck.personalInfo[0].aboutYou = args.aboutYou;
+
+            console.log(userForCheck);
+
+            const updatedUser = await userForCheck.save();
+
+            return `User updated ${updatedUser}`;
+        }
+
+    },
 
 }

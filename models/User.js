@@ -8,14 +8,14 @@ const UserPersonalInfo = new Schema({
             default: "" 
         },
 
-        lasName: {
+        lastName: {
             type: String,
             default: ""
         },
 
         DOB: {
-            type: Date,
-            default: Date.now
+            type: String,
+            default: ""
         }, 
 
         state: {
