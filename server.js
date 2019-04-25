@@ -17,7 +17,6 @@ const corsOptions = {
 }
 
 const app = express();
-app.use(bodyParser.json());
 app.use(cors(corsOptions));
 
 const { makeExecutableSchema } = require('graphql-tools');
@@ -29,7 +28,7 @@ const schema = makeExecutableSchema({
 });
 
 
-app.use('/graphql', apolloUploadExpress({uploadDir: "./uploads"}), graphqlHTTP({
+app.use('/graphql', bodyParser.json(), apolloUploadExpress({uploadDir: "./uploads"}), graphqlHTTP({
     schema: schema,
     rootValue: resolvers,
     context: {

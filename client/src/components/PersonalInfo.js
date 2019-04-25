@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import {Mutation} from 'react-apollo';
+import {UPLOAD_FILE} from '../queries/index';
 import DatePicker from "react-datepicker";
 import Drop from './Dropzone';
 import "react-datepicker/dist/react-datepicker.css";
@@ -19,7 +21,12 @@ const PersonalInfo = (props) => {
         lastName: "",
         aboutYou: "",
         DOB: new Date(),
-        avatar: {},
+        avatar: {
+            name: "",
+            type: "",
+            size: 0,
+            path: ""
+        },
         city: ""
     });
 
@@ -93,64 +100,73 @@ const PersonalInfo = (props) => {
                 </div>
 
                 <div className="form__wrapper">
-                    <form>
-                        <div className="input__row">
-                            <input className="input-sm" placeholder="First Name" value={personalInfo.firstName} onChange={(e) => setPersonalInfo({...personalInfo, firstName: e.target.value})}/>
-                            <input className="input-sm" placeholder="Last Name" value={personalInfo.lastName} onChange={(e) => setPersonalInfo({...personalInfo, lastName: e.target.value})}/>
-                        </div>
+                    <Mutation mutation={UPLOAD_FILE} variables={{file: {name: personalInfo.avatar.name, type: personalInfo.avatar.type, size: personalInfo.avatar.size, path: personalInfo.avatar.path}}}>
+                    {uploadFile => {
+                        return (
 
-                        <div className="input__row">
-                            <textarea onChange={(e) => {
-                                setPersonalInfo({...personalInfo, aboutYou: e.target.value});
-                                decrementcounter(e);
-                            }}
-                                value={personalInfo.aboutYou} 
-                                style={counter === 0 ? errorStyle : {}}
-                                className="input-lg" rows="3" maxLength="180" placeholder="Tell us about yourself"/>
-                        </div>
+                            <form onSubmit={(e) => {e.preventDefault(); uploadFile()}}>
+                                <div className="input__row">
+                                    <input className="input-sm" placeholder="First Name" value={personalInfo.firstName} onChange={(e) => setPersonalInfo({...personalInfo, firstName: e.target.value})}/>
+                                    <input className="input-sm" placeholder="Last Name" value={personalInfo.lastName} onChange={(e) => setPersonalInfo({...personalInfo, lastName: e.target.value})}/>
+                                </div>
 
-                        <p className="counter" >
-                            {counter} character{ending} left 
-                        </p>
+                                <div className="input__row">
+                                    <textarea onChange={(e) => {
+                                        setPersonalInfo({...personalInfo, aboutYou: e.target.value});
+                                        decrementcounter(e);
+                                    }}
+                                        value={personalInfo.aboutYou} 
+                                        style={counter === 0 ? errorStyle : {}}
+                                        className="input-lg" rows="3" maxLength="180" placeholder="Tell us about yourself"/>
+                                </div>
 
-                        <div className="input__row">
-                            <div  className="label ">
-                                <label htmlFor="date-picker" className="label">Select Your Date of Birth</label>
-                                <DatePicker 
-                                id="date-picker"
-                                selected={personalInfo.DOB}
-                                onChange={(e) => setPersonalInfo({...personalInfo, DOB: e})}
-                                />
-                            </div>
+                                <p className="counter" >
+                                    {counter} character{ending} left 
+                                </p>
 
-                            <div  className="label ">
-                                <label htmlFor="city" className="label">Your Town/City</label>
-                                <input id="city" type="text" value={personalInfo.city} 
-                                    onChange={(e) => setPersonalInfo({...personalInfo, city: e.target.value})}/>  
-                            </div>
+                                <div className="input__row">
+                                    <div  className="label ">
+                                        <label htmlFor="date-picker" className="label">Select Your Date of Birth</label>
+                                        <DatePicker 
+                                        id="date-picker"
+                                        selected={personalInfo.DOB}
+                                        onChange={(e) => setPersonalInfo({...personalInfo, DOB: e})}
+                                        />
+                                    </div>
 
-                            <div  className="label label-wide">
-                                <label htmlFor="select" className="label file-upload">Select Your State</label>
-                                <select id="select" onChange={(e) => setPersonalInfo({...personalInfo, state: e.target.value})}>
-                                {states.map(state => <option key={state.abbreviation}>{state.name}</option>)}
-                                </select>
-                            </div>
+                                    <div  className="label ">
+                                        <label htmlFor="city" className="label">Your Town/City</label>
+                                        <input id="city" type="text" value={personalInfo.city} 
+                                            onChange={(e) => setPersonalInfo({...personalInfo, city: e.target.value})}/>  
+                                    </div>
 
-                        </div>
+                                    <div  className="label label-wide">
+                                        <label htmlFor="select" className="label file-upload">Select Your State</label>
+                                        <select id="select" onChange={(e) => setPersonalInfo({...personalInfo, state: e.target.value})}>
+                                        {states.map(state => <option key={state.abbreviation}>{state.name}</option>)}
+                                        </select>
+                                    </div>
 
-                        
-                        <div className="input__row">
-                            
-                            <div className="label">
-                                <label htmlFor="file-upload" className="label file-upload">Upload Your Photo</label>
-                                <Drop onDrop={onDrop}/>
-                            </div>
+                                </div>
 
-                        </div>
+                                
+                                <div className="input__row">
+                                    
+                                    <div className="label">
+                                        <label htmlFor="file-upload" className="label file-upload">Upload Your Photo</label>
+                                        <Drop onDrop={onDrop}/>
+                                    </div>
 
-                    <p className="button-align"><button className="button" type="submit">Next</button></p>
-                    </form>
+                                </div>
+
+                            <p className="button-align"><button className="button" type="submit">Next</button></p>
+                            </form>
+                        );
+                    }}
+                    </Mutation>
                 </div>
+
+                <img src={personalInfo.avatar ? personalInfo.avatar : ""}></img>
             </div>
 
         </div>

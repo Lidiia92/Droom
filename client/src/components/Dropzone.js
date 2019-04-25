@@ -24,9 +24,13 @@ import React, {useCallback, useState} from 'react';
 import {Mutation} from 'react-apollo';
 import {UPLOAD_FILE} from '../queries/index';
 import {useDropzone} from 'react-dropzone';
+import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import './styles/Dropzone.css';
+
+const CLOUD_NAME = process.env.REACT_APP_CLOUD_NAME;
+
 
 function Drop(props) {
   
@@ -44,19 +48,33 @@ function Drop(props) {
     path: ""
   }
 
-  const onDrop = useCallback(acceptedFiles => {
+  const onDrop = useCallback(async acceptedFiles => {
+      const uploaded = await uploadingImg(acceptedFiles[0]);
       setAvatar(acceptedFiles[0]);
-      props.onDrop(acceptedFiles[0]);
+      props.onDrop(uploaded);
+      console.log("image", acceptedFiles[0])
+
   }, [])
   const {getRootProps, getInputProps, isDragActive} = useDropzone({onDrop})
 
-  
+  async function uploadingImg (file) {
+    const newImg = file;
+    const formdata = new FormData();
+    formdata.append('file', newImg);
+    formdata.append('upload_preset', 'image-upload-unsigned');
+
+    const response = await axios.post(`https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`, formdata);
+
+    return response.data.url;
+  }
+
+  //onChange={() => uploadFile({variables: {file: {...avatar}}})}
   return (
     <Mutation mutation={UPLOAD_FILE} >
 
-        {(uploadFile, {data, loading, error}) => {
+        {uploadFile => {
             return (
-                <div className="dropzone" {...getRootProps()} onChange={() => uploadFile({variables: {file: {...avatar}}})}>
+                <div className="dropzone" {...getRootProps()} >
                 <input {...getInputProps()} />
                 {
                     isDragActive ?
