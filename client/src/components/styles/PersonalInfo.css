@@ -239,3 +239,27 @@
 .button:hover {
     background: #0cab87;
 }
+
+@media (max-width: 1150px) {
+    .input__row-column {
+        flex-direction: column;
+    }
+
+    .label-sm-wide {
+        width: 100%;
+    }
+
+}
+
+@media (max-width: 700px) {
+    .sections {
+
+        font-size: 1.6rem;
+    
+    }
+
+    .mg-top {
+        margin-top: 25px;
+    }
+
+}

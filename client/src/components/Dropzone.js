@@ -34,19 +34,14 @@ const CLOUD_NAME = process.env.REACT_APP_CLOUD_NAME;
 
 function Drop(props) {
   
-  const [avatar, setAvatar] = useState({
-      name: "",
-      type: "",
-      size: 0,
-      path: ""
-  });
+    const [avatar, setAvatar] = useState({
+        name: ""
+    });
+  
+    const emptyAvatar = {
+      name: ""
+    }  
 
-  const emptyAvatar = {
-    name: "",
-    type: "",
-    size: 0,
-    path: ""
-  }
 
   const onDrop = useCallback(async acceptedFiles => {
       const uploaded = await uploadingImg(acceptedFiles[0]);
@@ -68,34 +63,28 @@ function Drop(props) {
     return response.data.url;
   }
 
-  //onChange={() => uploadFile({variables: {file: {...avatar}}})}
-  return (
-    <Mutation mutation={UPLOAD_FILE} >
+    return (
+    
+                    <div className="dropzone" {...getRootProps()} >
+                    <input {...getInputProps()} />
+                    {
+                        isDragActive ?
+                        <div className="draggable">
+                            <p className="draggable-p">Drop the files here ...</p>
+                            {avatar.name ? <p ><FontAwesomeIcon className="image-upload upload-success" icon="check-square"/></p> : <p ><FontAwesomeIcon className="image-upload" icon="image"/></p>}
+                            <button className="btn-cancel" onClick={(e) => {e.stopPropagation(); e.preventDefault(); setAvatar(emptyAvatar)}}>Cancel</button>
+                        </div> :
+                        <div  className="draggable" >
+                            <p className="draggable-p">Drag 'n' drop image here, or click to select</p>
+                            {avatar.name  ? <p ><FontAwesomeIcon className="image-upload upload-success" icon="check-square"/></p> : <p><FontAwesomeIcon  className="image-upload" icon="image"/></p>}
+                            <button className="btn-cancel" onClick={(e) => {e.stopPropagation(); e.preventDefault(); setAvatar(emptyAvatar)}}>Cancel</button>
+                        </div>
+                    }
 
-        {uploadFile => {
-            return (
-                <div className="dropzone" {...getRootProps()} >
-                <input {...getInputProps()} />
-                {
-                    isDragActive ?
-                    <div className="draggable">
-                        <p className="draggable-p">Drop the files here ...</p>
-                        {avatar.name ? <p ><FontAwesomeIcon className="image-upload upload-success" icon="check-square"/></p> : <p ><FontAwesomeIcon className="image-upload" icon="image"/></p>}
-                        <button className="btn-cancel" onClick={(e) => {e.stopPropagation(); e.preventDefault(); setAvatar(emptyAvatar)}}>Cancel</button>
-                    </div> :
-                    <div  className="draggable" >
-                        <p className="draggable-p">Drag 'n' drop image here, or click to select</p>
-                        {avatar.name  ? <p ><FontAwesomeIcon className="image-upload upload-success" icon="check-square"/></p> : <p><FontAwesomeIcon  className="image-upload" icon="image"/></p>}
-                        <button className="btn-cancel" onClick={(e) => {e.stopPropagation(); e.preventDefault(); setAvatar(emptyAvatar)}}>Cancel</button>
                     </div>
-                }
 
-                </div>
-
-            );
-        }}
-    </Mutation>
-  )
+    
+        );
 }
 
 export default Drop;

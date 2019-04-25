@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import {Mutation} from 'react-apollo';
-import {UPLOAD_FILE} from '../queries/index';
 import DatePicker from "react-datepicker";
 import Drop from './Dropzone';
 import "react-datepicker/dist/react-datepicker.css";
@@ -21,13 +20,9 @@ const PersonalInfo = (props) => {
         lastName: "",
         aboutYou: "",
         DOB: new Date(),
-        avatar: {
-            name: "",
-            type: "",
-            size: 0,
-            path: ""
-        },
-        city: ""
+        avatar: "",
+        city: "",
+        state: ""
     });
 
     function decrementcounter(e) {
@@ -71,7 +66,7 @@ const PersonalInfo = (props) => {
         setPersonalInfo({...personalInfo, avatar: file})
     }
 
-    console.log(personalInfo);
+    //console.log(personalInfo);
     return (
 
         
@@ -100,11 +95,9 @@ const PersonalInfo = (props) => {
                 </div>
 
                 <div className="form__wrapper">
-                    <Mutation mutation={UPLOAD_FILE} variables={{file: {name: personalInfo.avatar.name, type: personalInfo.avatar.type, size: personalInfo.avatar.size, path: personalInfo.avatar.path}}}>
-                    {uploadFile => {
-                        return (
+                    
 
-                            <form onSubmit={(e) => {e.preventDefault(); uploadFile()}}>
+                            <form onSubmit={async (e) => {e.preventDefault(); await console.log(personalInfo)}}>
                                 <div className="input__row">
                                     <input className="input-sm" placeholder="First Name" value={personalInfo.firstName} onChange={(e) => setPersonalInfo({...personalInfo, firstName: e.target.value})}/>
                                     <input className="input-sm" placeholder="Last Name" value={personalInfo.lastName} onChange={(e) => setPersonalInfo({...personalInfo, lastName: e.target.value})}/>
@@ -124,8 +117,8 @@ const PersonalInfo = (props) => {
                                     {counter} character{ending} left 
                                 </p>
 
-                                <div className="input__row">
-                                    <div  className="label ">
+                                <div className="input__row input__row-column">
+                                    <div  className="label label-sm-wide">
                                         <label htmlFor="date-picker" className="label">Select Your Date of Birth</label>
                                         <DatePicker 
                                         id="date-picker"
@@ -140,7 +133,7 @@ const PersonalInfo = (props) => {
                                             onChange={(e) => setPersonalInfo({...personalInfo, city: e.target.value})}/>  
                                     </div>
 
-                                    <div  className="label label-wide">
+                                    <div  className="label label-wide label-sm-wide">
                                         <label htmlFor="select" className="label file-upload">Select Your State</label>
                                         <select id="select" onChange={(e) => setPersonalInfo({...personalInfo, state: e.target.value})}>
                                         {states.map(state => <option key={state.abbreviation}>{state.name}</option>)}
@@ -159,11 +152,9 @@ const PersonalInfo = (props) => {
 
                                 </div>
 
-                            <p className="button-align"><button className="button" type="submit">Next</button></p>
+                            <p className="button-align"><button className="button mg-top" type="submit">Next</button></p>
                             </form>
-                        );
-                    }}
-                    </Mutation>
+
                 </div>
 
                 <img src={personalInfo.avatar ? personalInfo.avatar : ""}></img>

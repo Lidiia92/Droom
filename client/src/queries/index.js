@@ -12,10 +12,5 @@ export const SIGNUP_USER = gql`
 
 `;
 
-export const UPLOAD_FILE= gql`
 
-    mutation($file: Upload!) {
-        uploadFile(file: $file) 
-    }
 
-`;

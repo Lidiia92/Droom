@@ -51,20 +51,6 @@ exports.typeDefs =`
         uid: String
     }
 
-    input Upload {
-        name: String!
-        type: String!
-        size: Int!
-        path: String!
-    }
-
-    type File {
-        name: String
-        type: String
-        size: Int
-        path: String
-    }
-
     type Query {
         getCurrentUser: User 
         getTestData: String
@@ -72,7 +58,6 @@ exports.typeDefs =`
 
     type Mutation {
         signupUser(username: String!, email: String!, password: String!, role: String): Token
-        uploadFile(file: Upload!): Boolean!
 
     }
 

@@ -58,3 +58,23 @@ p .upload-success {
 .upload-success {
     color: #9ee5d5;
 }
+
+@media (max-width: 700px) {
+    .draggable {
+
+        width: 250px;
+        height: 290px;
+    
+    }
+
+    .image-upload {
+        font-size: 12rem;
+        padding: 20px 50px;
+    
+    }
+
+    .button {
+        margin-top: 25px;
+    }
+
+}
