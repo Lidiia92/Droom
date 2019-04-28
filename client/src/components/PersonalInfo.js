@@ -132,7 +132,7 @@ const PersonalInfo = (props) => {
                                         <form onSubmit={(e) => updateUser(e, updateUserPersonalInfo)}>
                                             <div className="input__row">
                                                 <input className="input-sm" placeholder="First Name" value={personalInfo.firstName} onChange={(e) => setPersonalInfo({...personalInfo, firstName: e.target.value})} style={newError ? errorStyle : {}}/>
-                                                <input className="input-sm" placeholder="Last Name" value={personalInfo.lastName} onChange={(e) => setPersonalInfo({...personalInfo, lastName: e.target.value})}/>
+                                                <input className="input-sm" placeholder="Last Name" value={personalInfo.lastName} onChange={(e) => setPersonalInfo({...personalInfo, lastName: e.target.value})} style={newError ? errorStyle : {}}/>
                                             </div>
 
                                             <div className="input__row">
@@ -141,8 +141,9 @@ const PersonalInfo = (props) => {
                                                     decrementcounter(e);
                                                 }}
                                                     value={personalInfo.aboutYou} 
-                                                    style={counter === 0 ? errorStyle : {}}
-                                                    className="input-lg" rows="3" maxLength="180" placeholder="Tell us about yourself"/>
+                                                    style={counter === 0 || newError ? errorStyle : {}}
+                                                    className="input-lg" rows="3" maxLength="180" placeholder="Tell us about yourself"
+                                                    />
                                             </div>
 
                                             <p className="counter" >
@@ -156,19 +157,22 @@ const PersonalInfo = (props) => {
                                                     id="date-picker"
                                                     selected={personalInfo.DOB}
                                                     onChange={(e) => {setPersonalInfo({...personalInfo, DOB: e}); dataString(personalInfo.DOB)}}
+                                                    style={newError ? errorStyle : {}}
                                                     />
                                                 </div>
 
                                                 <div  className="label ">
                                                     <label htmlFor="city" className="label">Your Town/City</label>
                                                     <input id="city" type="text" value={personalInfo.city} 
-                                                        onChange={(e) => setPersonalInfo({...personalInfo, city: e.target.value})}/>  
+                                                        onChange={(e) => setPersonalInfo({...personalInfo, city: e.target.value})} style={newError ? errorStyle : {}}/>  
                                                 </div>
 
                                                 <div  className="label label-wide label-sm-wide">
                                                     <label htmlFor="select" className="label file-upload">Select Your State</label>
-                                                    <select id="select" onChange={(e) => setPersonalInfo({...personalInfo, state: e.target.value})}>
-                                                    {states.map(state => <option key={state.abbreviation}>{state.name}</option>)}
+                                                    <select id="select" onChange={(e) => setPersonalInfo({...personalInfo, state: e.target.value})}
+                                                    style={newError ? errorStyle : {}}
+                                                    >
+                                                    {states.map(state => <option key={state.abbreviation} >{state.name}</option>)}
                                                     </select>
                                                 </div>
 
