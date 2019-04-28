@@ -12,5 +12,11 @@ export const SIGNUP_USER = gql`
 
 `;
 
+export const UPDATE_USER_PERSONAL_INFO = gql`
+    mutation($_id: String!, $firstName: String, $lastName: String, $DOB: String, $state: String, $city: String, $avatar: String, $aboutYou: String) {
+        updateUserPersonalInfo(_id: $_id, firstName: $firstName, lastName: $lastName, DOB: $DOB, state: $state, city: $city, avatar: $avatar, aboutYou: $aboutYou)
+     }
+`;
+
 
 

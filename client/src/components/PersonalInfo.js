@@ -3,11 +3,13 @@ import {Mutation} from 'react-apollo';
 import DatePicker from "react-datepicker";
 import Drop from './Dropzone';
 import "react-datepicker/dist/react-datepicker.css";
+import {UPDATE_USER_PERSONAL_INFO} from '../queries/index';
 
 import {Link} from 'react-router-dom';
 import './styles/PersonalInfo.css';
 
 import states from '../components/Data/states';
+
 
 
 
@@ -22,8 +24,35 @@ const PersonalInfo = (props) => {
         DOB: new Date(),
         avatar: "",
         city: "",
-        state: ""
+        state: states[0]
     });
+
+    const [dateAsString, setDateAsString] = useState("");
+    const [uid, setUid] = useState(localStorage.getItem("uid"));
+
+    const [newError, setNewError] = useState("");
+
+    function dataString(data) {
+        const dataString = JSON.stringify(data);
+        console.log(dataString);
+        setDateAsString(dataString);
+        console.log(dataString);
+    }
+
+    async function updateUser(e, updatedInfo) {
+        
+        if(!personalInfo.firstName || !personalInfo.lastName || !personalInfo.aboutYou || !personalInfo.DOB || !personalInfo.avatar || !personalInfo.city || !personalInfo.state) {
+             const errMessage = "Please fill out all fields"
+             setNewError(errMessage);
+             console.log(errMessage);
+             e.preventDefault();
+             return;
+        }
+
+        e.preventDefault();
+        const updated = await updatedInfo();
+        console.log('hi');
+    }
 
     function decrementcounter(e) {
         
@@ -96,68 +125,73 @@ const PersonalInfo = (props) => {
 
                 <div className="form__wrapper">
                     
+                            <Mutation mutation={UPDATE_USER_PERSONAL_INFO} variables={{_id: uid, firstName: personalInfo.firstName, lastName: personalInfo.lastName, aboutYou: personalInfo.aboutYou, DOB: dateAsString, avatar: personalInfo.avatar, city: personalInfo.city, state: personalInfo.state}}>
+                                {(updateUserPersonalInfo, {data}) => {
+                                    return (
 
-                            <form onSubmit={async (e) => {e.preventDefault(); await console.log(personalInfo)}}>
-                                <div className="input__row">
-                                    <input className="input-sm" placeholder="First Name" value={personalInfo.firstName} onChange={(e) => setPersonalInfo({...personalInfo, firstName: e.target.value})}/>
-                                    <input className="input-sm" placeholder="Last Name" value={personalInfo.lastName} onChange={(e) => setPersonalInfo({...personalInfo, lastName: e.target.value})}/>
-                                </div>
+                                        <form onSubmit={(e) => updateUser(e, updateUserPersonalInfo)}>
+                                            <div className="input__row">
+                                                <input className="input-sm" placeholder="First Name" value={personalInfo.firstName} onChange={(e) => setPersonalInfo({...personalInfo, firstName: e.target.value})} style={newError ? errorStyle : {}}/>
+                                                <input className="input-sm" placeholder="Last Name" value={personalInfo.lastName} onChange={(e) => setPersonalInfo({...personalInfo, lastName: e.target.value})}/>
+                                            </div>
 
-                                <div className="input__row">
-                                    <textarea onChange={(e) => {
-                                        setPersonalInfo({...personalInfo, aboutYou: e.target.value});
-                                        decrementcounter(e);
-                                    }}
-                                        value={personalInfo.aboutYou} 
-                                        style={counter === 0 ? errorStyle : {}}
-                                        className="input-lg" rows="3" maxLength="180" placeholder="Tell us about yourself"/>
-                                </div>
+                                            <div className="input__row">
+                                                <textarea onChange={(e) => {
+                                                    setPersonalInfo({...personalInfo, aboutYou: e.target.value});
+                                                    decrementcounter(e);
+                                                }}
+                                                    value={personalInfo.aboutYou} 
+                                                    style={counter === 0 ? errorStyle : {}}
+                                                    className="input-lg" rows="3" maxLength="180" placeholder="Tell us about yourself"/>
+                                            </div>
 
-                                <p className="counter" >
-                                    {counter} character{ending} left 
-                                </p>
+                                            <p className="counter" >
+                                                {counter} character{ending} left 
+                                            </p>
 
-                                <div className="input__row input__row-column">
-                                    <div  className="label label-sm-wide">
-                                        <label htmlFor="date-picker" className="label">Select Your Date of Birth</label>
-                                        <DatePicker 
-                                        id="date-picker"
-                                        selected={personalInfo.DOB}
-                                        onChange={(e) => setPersonalInfo({...personalInfo, DOB: e})}
-                                        />
-                                    </div>
+                                            <div className="input__row input__row-column">
+                                                <div  className="label label-sm-wide">
+                                                    <label htmlFor="date-picker" className="label">Select Your Date of Birth</label>
+                                                    <DatePicker 
+                                                    id="date-picker"
+                                                    selected={personalInfo.DOB}
+                                                    onChange={(e) => {setPersonalInfo({...personalInfo, DOB: e}); dataString(personalInfo.DOB)}}
+                                                    />
+                                                </div>
 
-                                    <div  className="label ">
-                                        <label htmlFor="city" className="label">Your Town/City</label>
-                                        <input id="city" type="text" value={personalInfo.city} 
-                                            onChange={(e) => setPersonalInfo({...personalInfo, city: e.target.value})}/>  
-                                    </div>
+                                                <div  className="label ">
+                                                    <label htmlFor="city" className="label">Your Town/City</label>
+                                                    <input id="city" type="text" value={personalInfo.city} 
+                                                        onChange={(e) => setPersonalInfo({...personalInfo, city: e.target.value})}/>  
+                                                </div>
 
-                                    <div  className="label label-wide label-sm-wide">
-                                        <label htmlFor="select" className="label file-upload">Select Your State</label>
-                                        <select id="select" onChange={(e) => setPersonalInfo({...personalInfo, state: e.target.value})}>
-                                        {states.map(state => <option key={state.abbreviation}>{state.name}</option>)}
-                                        </select>
-                                    </div>
+                                                <div  className="label label-wide label-sm-wide">
+                                                    <label htmlFor="select" className="label file-upload">Select Your State</label>
+                                                    <select id="select" onChange={(e) => setPersonalInfo({...personalInfo, state: e.target.value})}>
+                                                    {states.map(state => <option key={state.abbreviation}>{state.name}</option>)}
+                                                    </select>
+                                                </div>
 
-                                </div>
+                                            </div>
 
-                                
-                                <div className="input__row">
-                                    
-                                    <div className="label">
-                                        <label htmlFor="file-upload" className="label file-upload">Upload Your Photo</label>
-                                        <Drop onDrop={onDrop}/>
-                                    </div>
+                                            
+                                            <div className="input__row">
+                                                
+                                                <div className="label">
+                                                    <label htmlFor="file-upload" className="label file-upload">Upload Your Photo</label>
+                                                    <Drop onDrop={onDrop}/>
+                                                </div>
 
-                                </div>
-
-                            <p className="button-align"><button className="button mg-top" type="submit">Next</button></p>
-                            </form>
+                                            </div>
+                                        {newError ? <p className="err-message">{newError}</p> : null}
+                                        <p className="button-align"><button className="button mg-top" type="submit">Next</button></p>
+                                        </form>
+                                    );
+                                }}
+                            </Mutation>
 
                 </div>
 
-                <img src={personalInfo.avatar ? personalInfo.avatar : ""}></img>
             </div>
 
         </div>

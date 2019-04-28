@@ -54,7 +54,7 @@ exports.resolvers = {
 
             const updatedUser = await userForCheck.save();
 
-            return `User updated ${updatedUser}`;
+            return `User updated`;
         }
 
     },
