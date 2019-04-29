@@ -51,6 +51,20 @@ const Experience = (props) => {
                             <input className="input-lg" placeholder="Field of Study" />
                         </div>
 
+                        <div className="input__row">
+                                <div className="labeled__input">
+                                    <label htmlFor="startDate" className="label">From Year</label>                 
+                                    <input id="startDate"  placeholder="Field of Study" />  
+                                </div>
+                                <div className="labeled__input">
+                                    <label htmlFor="startDate" className="label">To Year</label>
+                                    <input id="startDate"  placeholder="Field of Study" />                   
+                                </div>
+                        </div>   
+
+                        <div className="input__row">
+                        </div>  
+
                     </form>
 
                 </div>

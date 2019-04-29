@@ -247,6 +247,17 @@
     color: #191919;
 }
 
+
+
+/* Experience Page */
+
+
+.labeled__input {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+}
+
 @media (max-width: 1150px) {
     .input__row-column {
         flex-direction: column;
