@@ -88,10 +88,6 @@
     width: 100%;
 }
 
-.error {
-
-}
-
 .input-sm {
     width: 43%;
 }
@@ -257,6 +253,32 @@
     flex-direction: column;
     width: 40%;
 }
+
+.add-more {
+    width: 100%;
+    text-transform: uppercase;
+    color: #0ebe96;
+    font-size: 1.6rem;
+    text-align: center;
+    cursor: pointer;
+}
+
+.btn-red {
+    background: #ff6666;
+}
+
+.btn-red:hover {
+    background: #e55b5b;
+}
+
+  .slide-fade{
+    transition: all 0.4s ease-out;
+  }
+  .slide-fade-show {
+    height: 100%;
+  }
+
+
 
 @media (max-width: 1150px) {
     .input__row-column {
