@@ -12,6 +12,25 @@ const Experience = (props) => {
     const [counter, setCounter] = useState(0)
     const [educationArray, setEducationArray] = useState([0]);
 
+    const [schoolName0, setName0] = useState("");
+    const [schoolName1, setName1] = useState("");
+    const [schoolName2, setName2] = useState("");
+    const [schoolName3, setName3] = useState("");
+
+    // const formState = educationArray.map((education) => 
+    //     {
+    //         return const [name, ``]
+    //     }
+    // )
+
+    // function onChangeHandler(e, educationVal) {
+    //     educationArray.map(item => {
+    //         if(item === educationVal) {
+    //             setName(e.target.value);
+    //         }
+    //     })
+    // }
+
     function addEducation(newCounter) {
 
         setCounter(newCounter + 1);
@@ -29,7 +48,13 @@ const Experience = (props) => {
     }
 
 
+    
+    
+    const schoolNames =  [schoolName0, schoolName1, schoolName2, schoolName3];
+    const schoolNamesFunctions = [setName0, setName1, setName2, setName3];
+    
     console.log('test2', counter, educationArray);
+
     return (
 
         
@@ -60,10 +85,11 @@ const Experience = (props) => {
                 <div className="form__wrapper">
 
                     {educationArray.map((education, index) => {
+                        
                         return (
                             <form key={education} className={index !== 0 ? `slide-fade slide-fade-show` : ''}>
                                 <div className="input__row">
-                                    <input className="input-sm" placeholder="School Name" />
+                                    <input className="input-sm" placeholder="School Name" name={`schoolName${index}`} onChange={(e) => schoolNamesFunctions[index](e.target.value)} value={`${schoolNames[index]}`}/>
                                     <input className="input-sm" placeholder="Degree" />
                                 </div>
 
