@@ -17,25 +17,20 @@ const Experience = (props) => {
     const [schoolName2, setName2] = useState("");
     const [schoolName3, setName3] = useState("");
 
-    // const formState = educationArray.map((education) => 
-    //     {
-    //         return const [name, ``]
-    //     }
-    // )
-
-    // function onChangeHandler(e, educationVal) {
-    //     educationArray.map(item => {
-    //         if(item === educationVal) {
-    //             setName(e.target.value);
-    //         }
-    //     })
-    // }
 
     function addEducation(newCounter) {
 
         setCounter(newCounter + 1);
         console.log(counter);
-        setEducationArray([...educationArray, newCounter + 1]);
+        if(educationArray.length < 4) {
+            setEducationArray([...educationArray, newCounter + 1]);
+        } else if(educationArray.length === 4) {
+            if(educationArray[1] === null) {
+                educationArray[1] = educationArray[2];
+                educationArray[2] = educationArray[3]
+                setEducationArray([educationArray[0], educationArray[1], educationArray[2], newCounter + 1]);
+            }
+        }
         console.log(educationArray);
     }
 
@@ -43,7 +38,16 @@ const Experience = (props) => {
         e.preventDefault();
         //setCounter(newCounter - 1);
         console.log('value', educationVal);
-        setEducationArray(educationArray.filter((item) => item !== educationVal))
+        //schoolNamesFunctions[index]("");
+        //setEducationArray(educationArray.filter((item) => item !== educationVal));
+
+        setEducationArray(educationArray.map(item => {
+            if(item === educationVal) {
+                item = null;
+            }
+            return item;
+        }));
+        console.log('test3', educationArray);
         
     }
 
@@ -85,39 +89,43 @@ const Experience = (props) => {
                 <div className="form__wrapper">
 
                     {educationArray.map((education, index) => {
+
+                        if(education !== null) {
+                            return (
+                                <form key={education !== null ? education : Math.random()} className={index !== 0 ? `slide-fade slide-fade-show` : ''}>
+                                    <div className="input__row">
+                                        <input className="input-sm" placeholder="School Name" name={`schoolName${index}`} onChange={(e) => schoolNamesFunctions[index](e.target.value)} value={`${schoolNames[index]}`}/>
+                                        <input className="input-sm" placeholder="Degree" />
+                                    </div>
+    
+                                    <div className="input__row">
+                                        <input className="input-lg" placeholder="Field of Study" />
+                                    </div>
+    
+                                    <div className="input__row">
+                                            <div className="labeled__input">
+                                                <label htmlFor="startDate" className="label">From Year</label>                 
+                                                <input id="startDate"  placeholder="Year" />  
+                                            </div>
+                                            <div className="labeled__input">
+                                                <label htmlFor="startDate" className="label">To Year</label>
+                                                <input id="startDate"  placeholder="Year" />                   
+                                            </div>
+                                    </div> 
+    
+                                    <button className="button" type="submit">Save</button>
+                                    {index !== 0 ? <button className="button btn-red" onClick={(e) => removeEducation(e, education)}>Cancel</button> : null}  
+    
+                                </form>
+                            );
+
+                        }
                         
-                        return (
-                            <form key={education} className={index !== 0 ? `slide-fade slide-fade-show` : ''}>
-                                <div className="input__row">
-                                    <input className="input-sm" placeholder="School Name" name={`schoolName${index}`} onChange={(e) => schoolNamesFunctions[index](e.target.value)} value={`${schoolNames[index]}`}/>
-                                    <input className="input-sm" placeholder="Degree" />
-                                </div>
-
-                                <div className="input__row">
-                                    <input className="input-lg" placeholder="Field of Study" />
-                                </div>
-
-                                <div className="input__row">
-                                        <div className="labeled__input">
-                                            <label htmlFor="startDate" className="label">From Year</label>                 
-                                            <input id="startDate"  placeholder="Year" />  
-                                        </div>
-                                        <div className="labeled__input">
-                                            <label htmlFor="startDate" className="label">To Year</label>
-                                            <input id="startDate"  placeholder="Year" />                   
-                                        </div>
-                                </div> 
-
-                                <button className="button" type="submit">Save</button>
-                                {index !== 0 ? <button className="button btn-red" onClick={(e) => removeEducation(e, education)}>Cancel</button> : null}  
-
-                            </form>
-                        );
                     })}
                 
 
                     <div className="input__row">
-                        {educationArray.length === 4 ? null : <p className="add-more" onClick={ () => addEducation(counter)}>+ Add New Education</p>}
+                        {((educationArray.length === 4 && !educationArray.includes(null)) || (educationArray.length > 4 && educationArray.includes(null))) ? null : <p className="add-more" onClick={ () => addEducation(counter)}>+ Add New Education</p>}
                     </div>  
 
                 </div>
