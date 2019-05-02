@@ -21,7 +21,7 @@ const Experience = (props) => {
     function addEducation(newCounter) {
 
         setCounter(newCounter + 1);
-        console.log(counter);
+        console.log('counter', counter);
         if(educationArray.length < 3) {
             setEducationArray([...educationArray, newCounter + 1]);
         } else if(educationArray.length === 3) {
@@ -29,6 +29,8 @@ const Experience = (props) => {
             if(educationArray[1] === null) {
                 educationArray[1] = educationArray[2];
                 setEducationArray([educationArray[0], educationArray[1], newCounter + 1]);
+                schoolNamesFunctions[1](schoolName2);
+                schoolNamesFunctions[2]("");
             } else if(educationArray[2] === null) {
                 educationArray[2] = newCounter + 1;
                 setEducationArray([educationArray[0], educationArray[1], educationArray[2]]);
