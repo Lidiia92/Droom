@@ -15,26 +15,31 @@ const Experience = (props) => {
     const [schoolName0, setName0] = useState("");
     const [schoolName1, setName1] = useState("");
     const [schoolName2, setName2] = useState("");
-    const [schoolName3, setName3] = useState("");
+   
 
 
     function addEducation(newCounter) {
 
         setCounter(newCounter + 1);
         console.log(counter);
-        if(educationArray.length < 4) {
+        if(educationArray.length < 3) {
             setEducationArray([...educationArray, newCounter + 1]);
-        } else if(educationArray.length === 4) {
+        } else if(educationArray.length === 3) {
+
             if(educationArray[1] === null) {
                 educationArray[1] = educationArray[2];
-                educationArray[2] = educationArray[3]
-                setEducationArray([educationArray[0], educationArray[1], educationArray[2], newCounter + 1]);
-            }
+                setEducationArray([educationArray[0], educationArray[1], newCounter + 1]);
+            } else if(educationArray[2] === null) {
+                educationArray[2] = newCounter + 1;
+                setEducationArray([educationArray[0], educationArray[1], educationArray[2]]);
+            } 
+
+
         }
         console.log(educationArray);
     }
 
-    function removeEducation(e, educationVal) {
+    function removeEducation(e, educationVal, index) {
         e.preventDefault();
         //setCounter(newCounter - 1);
         console.log('value', educationVal);
@@ -44,6 +49,7 @@ const Experience = (props) => {
         setEducationArray(educationArray.map(item => {
             if(item === educationVal) {
                 item = null;
+                schoolNamesFunctions[index]("");
             }
             return item;
         }));
@@ -54,8 +60,8 @@ const Experience = (props) => {
 
     
     
-    const schoolNames =  [schoolName0, schoolName1, schoolName2, schoolName3];
-    const schoolNamesFunctions = [setName0, setName1, setName2, setName3];
+    const schoolNames =  [schoolName0, schoolName1, schoolName2];
+    const schoolNamesFunctions = [setName0, setName1, setName2];
     
     console.log('test2', counter, educationArray);
 
@@ -114,7 +120,7 @@ const Experience = (props) => {
                                     </div> 
     
                                     <button className="button" type="submit">Save</button>
-                                    {index !== 0 ? <button className="button btn-red" onClick={(e) => removeEducation(e, education)}>Cancel</button> : null}  
+                                    {index !== 0 ? <button className="button btn-red" onClick={(e) => removeEducation(e, education, index)}>Cancel</button> : null}  
     
                                 </form>
                             );
@@ -125,7 +131,7 @@ const Experience = (props) => {
                 
 
                     <div className="input__row">
-                        {((educationArray.length === 4 && !educationArray.includes(null)) || (educationArray.length > 4 && educationArray.includes(null))) ? null : <p className="add-more" onClick={ () => addEducation(counter)}>+ Add New Education</p>}
+                        {((educationArray.length === 3 && !educationArray.includes(null)) || (educationArray.length > 3 && educationArray.includes(null))) ? null : <p className="add-more" onClick={ () => addEducation(counter)}>+ Add New Education</p>}
                     </div>  
 
                 </div>
