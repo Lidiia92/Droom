@@ -66,7 +66,12 @@ exports.resolvers = {
             userForCheck.education[0].schoolName = args.schoolName;
             userForCheck.education[0].degree = args.degree;
             userForCheck.education[0].field = args.field;
-            userForCheck.education[0].from = args.to;
+            userForCheck.education[0].from = args.from;
+            userForCheck.education[0].to = args.to;
+
+            const updatedUser = await userForCheck.save();
+
+            return `User updated`;
         }
 
     },
