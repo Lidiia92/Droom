@@ -28,6 +28,10 @@ const Experience = (props) => {
     const [from0, setFrom0] = useState("");
     const [from1, setFrom1] = useState("");
     const [from2, setFrom2] = useState("");
+
+    const [to0, setTo0] = useState("");
+    const [to1, setTo1] = useState("");
+    const [to2, setTo2] = useState("");
    
 
 
@@ -50,6 +54,8 @@ const Experience = (props) => {
                 fieldsFunctions[2]("");
                 fromsFunctions[1](from2);
                 fromsFunctions[2]("");
+                tosFunctions[1](to2);
+                tosFunctions[2]("");
             } else if(educationArray[2] === null) {
                 educationArray[2] = newCounter + 1;
                 setEducationArray([educationArray[0], educationArray[1], educationArray[2]]);
@@ -73,6 +79,7 @@ const Experience = (props) => {
                 degreesFunctions[index]("");
                 fieldsFunctions[index]("");
                 fromsFunctions[index]("");
+                tosFunctions[index]("");
             }
             return item;
         }));
@@ -94,6 +101,9 @@ const Experience = (props) => {
 
     const froms = [from0, from1, from2];
     const fromsFunctions = [setFrom0, setFrom1, setFrom2];
+
+    const tos = [to0, to1, to2];
+    const tosFunctions = [setTo0, setTo1, setTo2];
     
     console.log('test2', counter, educationArray);
 
@@ -147,7 +157,7 @@ const Experience = (props) => {
                                             </div>
                                             <div className="labeled__input">
                                                 <label htmlFor="startDate" className="label">To Year</label>
-                                                <input id="startDate"  placeholder="Year" />                   
+                                                <input id="startDate"  placeholder="Year" onChange={(e) => tosFunctions[index](e.target.value)} value={`${tos[index]}`}/>                   
                                             </div>
                                     </div> 
     
