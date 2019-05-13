@@ -15,6 +15,11 @@ const Experience = (props) => {
     const [schoolName0, setName0] = useState("");
     const [schoolName1, setName1] = useState("");
     const [schoolName2, setName2] = useState("");
+
+    
+    const [degree0, setDegree0] = useState("");
+    const [degree1, setDegree1] = useState("");
+    const [degree2, setDegree2] = useState("");
    
 
 
@@ -31,6 +36,8 @@ const Experience = (props) => {
                 setEducationArray([educationArray[0], educationArray[1], newCounter + 1]);
                 schoolNamesFunctions[1](schoolName2);
                 schoolNamesFunctions[2]("");
+                degreesFunctions[1](degree2);
+                degreesFunctions[2]("");
             } else if(educationArray[2] === null) {
                 educationArray[2] = newCounter + 1;
                 setEducationArray([educationArray[0], educationArray[1], educationArray[2]]);
@@ -43,7 +50,6 @@ const Experience = (props) => {
 
     function removeEducation(e, educationVal, index) {
         e.preventDefault();
-        //setCounter(newCounter - 1);
         console.log('value', educationVal);
         //schoolNamesFunctions[index]("");
         //setEducationArray(educationArray.filter((item) => item !== educationVal));
@@ -52,6 +58,7 @@ const Experience = (props) => {
             if(item === educationVal) {
                 item = null;
                 schoolNamesFunctions[index]("");
+                degreesFunctions[index]("");
             }
             return item;
         }));
@@ -64,6 +71,9 @@ const Experience = (props) => {
     
     const schoolNames =  [schoolName0, schoolName1, schoolName2];
     const schoolNamesFunctions = [setName0, setName1, setName2];
+
+    const degrees = [degree0, degree1, degree2];
+    const degreesFunctions = [setDegree0, setDegree1, setDegree2];
     
     console.log('test2', counter, educationArray);
 
@@ -103,7 +113,7 @@ const Experience = (props) => {
                                 <form key={education !== null ? education : Math.random()} className={index !== 0 ? `slide-fade slide-fade-show` : ''}>
                                     <div className="input__row">
                                         <input className="input-sm" placeholder="School Name" name={`schoolName${index}`} onChange={(e) => schoolNamesFunctions[index](e.target.value)} value={`${schoolNames[index]}`}/>
-                                        <input className="input-sm" placeholder="Degree" />
+                                        <input className="input-sm" placeholder="Degree" onChange={(e) => degreesFunctions[index](e.target.value)} value={`${degrees[index]}`}/>
                                     </div>
     
                                     <div className="input__row">
