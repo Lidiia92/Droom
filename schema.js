@@ -65,6 +65,7 @@ exports.typeDefs =`
     type Mutation {
         signupUser(username: String!, email: String!, password: String!, role: String): Token
         updateUserPersonalInfo(_id: String!, firstName: String, lastName: String, DOB: String, state: String, city: String, avatar: String, aboutYou: String): String
+        updateUserEducation(_id: String!, schoolName: String, degree: String, field: String, from: String, to: String): String
     }
 
 `;

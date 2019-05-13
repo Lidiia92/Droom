@@ -55,6 +55,13 @@ exports.resolvers = {
             const updatedUser = await userForCheck.save();
 
             return `User updated`;
+        },
+
+        updateUserEducation: async(root, args, {User}) => {
+            const userForCheck = await User.findOne({_id: args._id});
+            if(!userForCheck) {
+                throw new Error('User with provided id was not found');
+            }
         }
 
     },

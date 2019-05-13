@@ -152,8 +152,8 @@ const UserSchema = new Schema({
     },
 
     education: {
-        type: [UserEducation],
-        default: [UserEducation]
+        type: [UserEducation, UserEducation, UserEducation],
+        default: [UserEducation, UserEducation, UserEducation]
     },
 
 
