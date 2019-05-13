@@ -25,6 +25,9 @@ const Experience = (props) => {
     const [field1, setField1] = useState("");
     const [field2, setField2] = useState("");
 
+    const [from0, setFrom0] = useState("");
+    const [from1, setFrom1] = useState("");
+    const [from2, setFrom2] = useState("");
    
 
 
@@ -45,6 +48,8 @@ const Experience = (props) => {
                 degreesFunctions[2]("");
                 fieldsFunctions[1](field2);
                 fieldsFunctions[2]("");
+                fromsFunctions[1](from2);
+                fromsFunctions[2]("");
             } else if(educationArray[2] === null) {
                 educationArray[2] = newCounter + 1;
                 setEducationArray([educationArray[0], educationArray[1], educationArray[2]]);
@@ -67,6 +72,7 @@ const Experience = (props) => {
                 schoolNamesFunctions[index]("");
                 degreesFunctions[index]("");
                 fieldsFunctions[index]("");
+                fromsFunctions[index]("");
             }
             return item;
         }));
@@ -84,7 +90,10 @@ const Experience = (props) => {
     const degreesFunctions = [setDegree0, setDegree1, setDegree2];
 
     const fields = [field0, field1, field2];
-    const fieldsFunctions = [setField0, setField1, setDegree2];
+    const fieldsFunctions = [setField0, setField1, setField2];
+
+    const froms = [from0, from1, from2];
+    const fromsFunctions = [setFrom0, setFrom1, setFrom2];
     
     console.log('test2', counter, educationArray);
 
@@ -134,7 +143,7 @@ const Experience = (props) => {
                                     <div className="input__row">
                                             <div className="labeled__input">
                                                 <label htmlFor="startDate" className="label">From Year</label>                 
-                                                <input id="startDate"  placeholder="Year" />  
+                                                <input id="startDate"  placeholder="Year" onChange={(e) => fromsFunctions[index](e.target.value)} value={`${froms[index]}`}/>  
                                             </div>
                                             <div className="labeled__input">
                                                 <label htmlFor="startDate" className="label">To Year</label>
