@@ -20,6 +20,11 @@ const Experience = (props) => {
     const [degree0, setDegree0] = useState("");
     const [degree1, setDegree1] = useState("");
     const [degree2, setDegree2] = useState("");
+
+    const [field0, setField0] = useState("");
+    const [field1, setField1] = useState("");
+    const [field2, setField2] = useState("");
+
    
 
 
@@ -38,6 +43,8 @@ const Experience = (props) => {
                 schoolNamesFunctions[2]("");
                 degreesFunctions[1](degree2);
                 degreesFunctions[2]("");
+                fieldsFunctions[1](field2);
+                fieldsFunctions[2]("");
             } else if(educationArray[2] === null) {
                 educationArray[2] = newCounter + 1;
                 setEducationArray([educationArray[0], educationArray[1], educationArray[2]]);
@@ -59,6 +66,7 @@ const Experience = (props) => {
                 item = null;
                 schoolNamesFunctions[index]("");
                 degreesFunctions[index]("");
+                fieldsFunctions[index]("");
             }
             return item;
         }));
@@ -74,6 +82,9 @@ const Experience = (props) => {
 
     const degrees = [degree0, degree1, degree2];
     const degreesFunctions = [setDegree0, setDegree1, setDegree2];
+
+    const fields = [field0, field1, field2];
+    const fieldsFunctions = [setField0, setField1, setDegree2];
     
     console.log('test2', counter, educationArray);
 
@@ -117,7 +128,7 @@ const Experience = (props) => {
                                     </div>
     
                                     <div className="input__row">
-                                        <input className="input-lg" placeholder="Field of Study" />
+                                        <input className="input-lg" placeholder="Field of Study" onChange={(e) => fieldsFunctions[index](e.target.value)} value={`${fields[index]}`}/>
                                     </div>
     
                                     <div className="input__row">
