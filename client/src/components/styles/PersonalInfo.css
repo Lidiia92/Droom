@@ -232,6 +232,16 @@
     outline: none;
 }
 
+.button:disabled {
+    background: #b6b6b6;
+    cursor: text;
+}
+
+.button:disabled:hover {
+    background: #b6b6b6;
+    cursor: text;
+}
+
 .button:hover {
     background: #0cab87;
 }

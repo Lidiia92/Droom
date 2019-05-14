@@ -11,6 +11,9 @@ const Experience = (props) => {
 
     const [counter, setCounter] = useState(0)
     const [educationArray, setEducationArray] = useState([0]);
+    const [educationFormButton0, setEducationFormButton0] = useState(false);
+    const [educationFormButton1, setEducationFormButton1] = useState(true);
+    const [educationFormButton2, setEducationFormButton2] = useState(true);
 
     const [schoolName0, setName0] = useState("");
     const [schoolName1, setName1] = useState("");
@@ -104,6 +107,9 @@ const Experience = (props) => {
 
     const tos = [to0, to1, to2];
     const tosFunctions = [setTo0, setTo1, setTo2];
+
+    const saveButtons = [educationFormButton0, educationFormButton1, educationFormButton2];
+    const saveButtonsFunctions = [setEducationFormButton0, setEducationFormButton1, setEducationFormButton2];
     
     console.log('test2', counter, educationArray);
 
@@ -161,7 +167,7 @@ const Experience = (props) => {
                                             </div>
                                     </div> 
     
-                                    <button className="button" type="submit">Save</button>
+                                    <button className="button" type="submit" disabled={saveButtons[index]} onClick={() => {saveButtonsFunctions[index](!saveButtons[index]); if(index !== 2){saveButtonsFunctions[index+1](false)}}}>Save</button>
                                     {index !== 0 ? <button className="button btn-red" onClick={(e) => removeEducation(e, education, index)}>Cancel</button> : null}  
     
                                 </form>
