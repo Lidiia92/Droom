@@ -59,6 +59,10 @@ const Experience = (props) => {
                 fromsFunctions[2]("");
                 tosFunctions[1](to2);
                 tosFunctions[2]("");
+
+                if(saveButtons[0] === true && saveButtons[1] === false) {
+                    saveButtonsFunctions[2](true);
+                }
             } else if(educationArray[2] === null) {
                 educationArray[2] = newCounter + 1;
                 setEducationArray([educationArray[0], educationArray[1], educationArray[2]]);
@@ -83,6 +87,11 @@ const Experience = (props) => {
                 fieldsFunctions[index]("");
                 fromsFunctions[index]("");
                 tosFunctions[index]("");
+
+                if(index !== 2 && saveButtons[0] !== false) {
+                    saveButtonsFunctions[index+1](false);
+                }
+                
             }
             return item;
         }));
