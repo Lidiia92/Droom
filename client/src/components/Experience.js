@@ -102,10 +102,11 @@ const Experience = (props) => {
         
     }
 
-    function submitHandler(e, updateUserEducation) {
+    async function submitHandler(e, updateUserEducation) {
 
-       console.log('updated');
+       
        e.preventDefault();
+       const updated = await updateUserEducation();
 
     }
 
