@@ -24,5 +24,11 @@ export const UPDATE_USER_EDUCATION_0 = gql`
     }
 `;
 
+export const UPDATE_USER_EDUCATION_1 = gql`
+    mutation($_id: String!, $schoolName: String, $degree: String, $field: String, $from: String, $to: String) {
+        updateUserEducation1(_id: $_id, schoolName: $schoolName, degree: $degree, field: $field, from: $from, to: $to)
+    }
+`;
+
 
 

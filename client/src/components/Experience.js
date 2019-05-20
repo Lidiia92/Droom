@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
-
+import {UPDATE_USER_EDUCATION_0} from '../queries/index';
+import {UPDATE_USER_EDUCATION_1} from '../queries/index';
+import {Mutation} from 'react-apollo';
+import {withRouter} from 'react-router-dom';
 
 import {Link} from 'react-router-dom';
 import './styles/PersonalInfo.css';
@@ -99,6 +102,13 @@ const Experience = (props) => {
         
     }
 
+    function submitHandler(e, updateUserEducation) {
+
+       console.log('updated');
+       e.preventDefault();
+
+    }
+
 
     
     
@@ -119,6 +129,8 @@ const Experience = (props) => {
 
     const saveButtons = [educationFormButton0, educationFormButton1, educationFormButton2];
     const saveButtonsFunctions = [setEducationFormButton0, setEducationFormButton1, setEducationFormButton2];
+
+    const mutationsFunctions = [UPDATE_USER_EDUCATION_0, UPDATE_USER_EDUCATION_1]
     
     console.log('test2', counter, educationArray);
 
@@ -155,33 +167,46 @@ const Experience = (props) => {
 
                         if(education !== null) {
                             return (
-                                <form key={education !== null ? education : Math.random()} className={index !== 0 ? `slide-fade slide-fade-show` : ''}>
-                                    <div className="input__row">
-                                        <input className="input-sm" placeholder="School Name" name={`schoolName${index}`} onChange={(e) => schoolNamesFunctions[index](e.target.value)} value={`${schoolNames[index]}`}/>
-                                        <input className="input-sm" placeholder="Degree" onChange={(e) => degreesFunctions[index](e.target.value)} value={`${degrees[index]}`}/>
-                                    </div>
-    
-                                    <div className="input__row">
-                                        <input className="input-lg" placeholder="Field of Study" onChange={(e) => fieldsFunctions[index](e.target.value)} value={`${fields[index]}`}/>
-                                    </div>
-    
-                                    <div className="input__row">
-                                            <div className="labeled__input">
-                                                <label htmlFor="startDate" className="label">From Year</label>                 
-                                                <input id="startDate"  placeholder="Year" onChange={(e) => fromsFunctions[index](e.target.value)} value={`${froms[index]}`}/>  
-                                            </div>
-                                            <div className="labeled__input">
-                                                <label htmlFor="startDate" className="label">To Year</label>
-                                                <input id="startDate"  placeholder="Year" onChange={(e) => tosFunctions[index](e.target.value)} value={`${tos[index]}`}/>                   
-                                            </div>
-                                    </div> 
-    
-                                    <button className="button" type="submit" disabled={saveButtons[index]} onClick={() => {saveButtonsFunctions[index](!saveButtons[index]); if(index !== 2){saveButtonsFunctions[index+1](false)}}}>Save</button>
-                                    {index !== 0 ? <button className="button btn-red" onClick={(e) => removeEducation(e, education, index)}>Cancel</button> : null}  
-    
-                                </form>
-                            );
+                                <Mutation mutation={mutationsFunctions[index]} key={education !== null ? education : Math.random()} variables={{_id: localStorage.getItem('uid'), schoolName: `${schoolNames[index]}`, degree: `${degrees[index]}`, field: `${fields[index]}`, from: `${froms[index]}`, to: `${tos[index]}`}}>
+                                    {(updateUserEducation, {data, loading, error}) => {
 
+                                        return (
+                                            <form  onSubmit={(e) => {
+                                                saveButtonsFunctions[index](!saveButtons[index]);
+                                                if(index !== 2) {
+                                                    saveButtonsFunctions[index+1](false)
+                                                }
+                                                submitHandler(e, updateUserEducation)}}>
+
+                                                <div className="input__row">
+                                                    <input className="input-sm" placeholder="School Name" name={`schoolName${index}`} onChange={(e) => schoolNamesFunctions[index](e.target.value)} value={`${schoolNames[index]}`}/>
+                                                    <input className="input-sm" placeholder="Degree" onChange={(e) => degreesFunctions[index](e.target.value)} value={`${degrees[index]}`}/>
+                                                </div>
+                
+                                                <div className="input__row">
+                                                    <input className="input-lg" placeholder="Field of Study" onChange={(e) => fieldsFunctions[index](e.target.value)} value={`${fields[index]}`}/>
+                                                </div>
+                
+                                                <div className="input__row">
+                                                        <div className="labeled__input">
+                                                            <label htmlFor="startDate" className="label">From Year</label>                 
+                                                            <input id="startDate"  placeholder="Year" onChange={(e) => fromsFunctions[index](e.target.value)} value={`${froms[index]}`}/>  
+                                                        </div>
+                                                        <div className="labeled__input">
+                                                            <label htmlFor="startDate" className="label">To Year</label>
+                                                            <input id="startDate"  placeholder="Year" onChange={(e) => tosFunctions[index](e.target.value)} value={`${tos[index]}`}/>                   
+                                                        </div>
+                                                </div> 
+                
+                                                <button className="button" type="submit" disabled={saveButtons[index]} >Save</button>
+                                                {index !== 0 ? <button className="button btn-red" onClick={(e) => removeEducation(e, education, index)}>Cancel</button> : null}  
+                
+                                            </form>
+                                        );
+
+                                    }}
+                                </Mutation>
+                            );
                         }
                         
                     })}
@@ -200,4 +225,4 @@ const Experience = (props) => {
     );
 };
 
-export default Experience;
+export default withRouter(Experience);
