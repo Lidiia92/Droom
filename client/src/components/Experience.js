@@ -160,16 +160,20 @@ const Experience = (props) => {
     
     console.log('test2', counter, educationArray);
 
+    const errorStyle = {
+        background: '#ffd1d1',
+    };
+
     return (
 
         
-        <div className="main-background">
+        <div className="main-background pd-bottom-lg">
             <div className="headings-light">
                 <Link to="/" className="brand-light">
                     Droom
                 </Link>
                 <h1 className="heading-light">Almost done!</h1>
-                <h3 className="subheading-light">We just need some additional information to set up your profile.</h3>
+                <h3 className="subheading-light mg-top-lg">We just need some additional information to set up your profile.</h3>
             </div>
 
             <div className="info__form">
@@ -211,22 +215,32 @@ const Experience = (props) => {
                                                 {errors[index] ? <p className="err-message">{errors[index]}</p> : null}
 
                                                 <div className="input__row">
-                                                    <input className="input-sm" placeholder="School Name" name={`schoolName${index}`} onChange={(e) => schoolNamesFunctions[index](e.target.value)} value={`${schoolNames[index]}`} pattern="[A-Za-z0-9.' ]+" title="School Name"/>
-                                                    <input className="input-sm" placeholder="Degree" onChange={(e) => degreesFunctions[index](e.target.value)} value={`${degrees[index]}`}/>
+                                                    <input className="input-sm" placeholder="School Name" name={`schoolName${index}`} onChange={(e) => schoolNamesFunctions[index](e.target.value)} value={`${schoolNames[index]}`} pattern="[A-Za-z0-9.' ]+" title="School Name"
+                                                    style={errors[index] ? errorStyle : {}}
+                                                    />
+                                                    <input className="input-sm" placeholder="Degree" onChange={(e) => degreesFunctions[index](e.target.value)} value={`${degrees[index]}`}
+                                                    style={errors[index] ? errorStyle : {}}
+                                                    />
                                                 </div>
                 
                                                 <div className="input__row">
-                                                    <input className="input-lg" placeholder="Field of Study" onChange={(e) => fieldsFunctions[index](e.target.value)} value={`${fields[index]}`}/>
+                                                    <input className="input-lg" placeholder="Field of Study" onChange={(e) => fieldsFunctions[index](e.target.value)} value={`${fields[index]}`}
+                                                    style={errors[index] ? errorStyle : {}}
+                                                    />
                                                 </div>
                 
                                                 <div className="input__row">
                                                         <div className="labeled__input">
                                                             <label htmlFor="startDate" className="label">From Year</label>                 
-                                                            <input id="startDate"  placeholder="Year" onChange={(e) => fromsFunctions[index](e.target.value)} value={`${froms[index]}`}/>  
+                                                            <input id="startDate"  placeholder="Year" onChange={(e) => fromsFunctions[index](e.target.value)} value={`${froms[index]}`}
+                                                            style={errors[index] ? errorStyle : {}}
+                                                            />  
                                                         </div>
                                                         <div className="labeled__input">
                                                             <label htmlFor="startDate" className="label">To Year</label>
-                                                            <input id="startDate"  placeholder="Year" onChange={(e) => tosFunctions[index](e.target.value)} value={`${tos[index]}`}/>                   
+                                                            <input id="startDate"  placeholder="Year" onChange={(e) => tosFunctions[index](e.target.value)} value={`${tos[index]}`}
+                                                            style={errors[index] ? errorStyle : {}}
+                                                            />                   
                                                         </div>
                                                 </div> 
                 

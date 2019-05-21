@@ -4,6 +4,10 @@
     padding: 50px 11% 60px 11%;
 }
 
+.pd-bottom-lg {
+    padding-bottom: 19.1%;
+}
+
 .headings-light {
     color: #e6f8f4;
 }
@@ -64,6 +68,10 @@
 .form__wrapper {
     width: 70%;
     margin: 30px auto 0 auto;
+}
+
+.mg-top-lg {
+    margin-bottom: 80px;
 }
 
 .form__wrapper input, textarea, select{
