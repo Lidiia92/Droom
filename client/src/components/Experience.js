@@ -216,17 +216,19 @@ const Experience = (props) => {
                                                 {errors[index] ? <p className="err-message">{errors[index]}</p> : null}
 
                                                 <div className="input__row">
-                                                    <input className="input-sm" placeholder="School Name" name={`schoolName${index}`} onChange={(e) => schoolNamesFunctions[index](e.target.value)} value={`${schoolNames[index]}`} pattern="[A-Za-z0-9.' ]+" title="School Name"
+                                                    <input className="input-sm" placeholder="School Name" name={`schoolName${index}`} onChange={(e) => schoolNamesFunctions[index](e.target.value)} value={`${schoolNames[index]}`} pattern="[A-Z][A-Za-z0-9.' ]+" title="School Name(A-Za-z0-9.' )"
                                                     style={errors[index] ? errorStyle : {}}
                                                     />
                                                     <input className="input-sm" placeholder="Degree" onChange={(e) => degreesFunctions[index](e.target.value)} value={`${degrees[index]}`}
                                                     style={errors[index] ? errorStyle : {}}
+                                                    pattern="[A-Z][A-Za-z' ]+" title="Degree(A-Za-z' )"
                                                     />
                                                 </div>
                 
                                                 <div className="input__row">
                                                     <input className="input-lg" placeholder="Field of Study" onChange={(e) => fieldsFunctions[index](e.target.value)} value={`${fields[index]}`}
                                                     style={errors[index] ? errorStyle : {}}
+                                                    pattern="[A-Z][A-Za-z ]+" title="Field of Study(A-Za-z )"
                                                     />
                                                 </div>
                 
@@ -235,12 +237,14 @@ const Experience = (props) => {
                                                             <label htmlFor="startDate" className="label">From Year</label>                 
                                                             <input id="startDate"  placeholder="Year" onChange={(e) => fromsFunctions[index](e.target.value)} value={`${froms[index]}`}
                                                             style={errors[index] ? errorStyle : {}}
+                                                            pattern="[0-9]{4}" title="Start Date(0-9)"
                                                             />  
                                                         </div>
                                                         <div className="labeled__input">
                                                             <label htmlFor="startDate" className="label">To Year</label>
                                                             <input id="startDate"  placeholder="Year" onChange={(e) => tosFunctions[index](e.target.value)} value={`${tos[index]}`}
                                                             style={errors[index] ? errorStyle : {}}
+                                                            pattern="[0-9]{4}" title="Start Date(0-9)"
                                                             />                   
                                                         </div>
                                                 </div> 
