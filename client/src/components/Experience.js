@@ -12,6 +12,10 @@ import './styles/PersonalInfo.css';
 
 const Experience = (props) => {
 
+    const [newError0, setNewError0] = useState("");
+    const [newError1, setNewError1] = useState("");
+    const [newError2, setNewError2] = useState("");
+
     const [counter, setCounter] = useState(0)
     const [educationArray, setEducationArray] = useState([0]);
     const [educationFormButton0, setEducationFormButton0] = useState(false);
@@ -102,12 +106,30 @@ const Experience = (props) => {
         
     }
 
-    async function submitHandler(e, updateUserEducation) {
+    async function submitHandler(e, updateUserEducation, variables, index) {
 
-       
+      if(!variables.schoolName, !variables.degree, !variables.field, !variables.from, !variables.to) {
+            const errMessage = "Please fill out all fields"
+            errorFunctions[index](errMessage);
+            e.preventDefault();
+            return;
+       }
+
        e.preventDefault();
-       const updated = await updateUserEducation();
+       if (validateText(variables.schoolName, variables.degree, variables.field)) {
+            
+            console.log('test');
+       }
+       //const updated = await updateUserEducation();
 
+    }
+
+    function validateText(schoolName, degree, field) {
+        if(schoolName && degree && field) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
 
@@ -130,6 +152,9 @@ const Experience = (props) => {
 
     const saveButtons = [educationFormButton0, educationFormButton1, educationFormButton2];
     const saveButtonsFunctions = [setEducationFormButton0, setEducationFormButton1, setEducationFormButton2];
+
+    const errors = [newError0, newError1, newError2];
+    const errorFunctions = [setNewError0, setNewError1, setNewError2];
 
     const mutationsFunctions = [UPDATE_USER_EDUCATION_0, UPDATE_USER_EDUCATION_1]
     
@@ -173,14 +198,20 @@ const Experience = (props) => {
 
                                         return (
                                             <form  onSubmit={(e) => {
-                                                saveButtonsFunctions[index](!saveButtons[index]);
-                                                if(index !== 2) {
-                                                    saveButtonsFunctions[index+1](false)
-                                                }
-                                                submitHandler(e, updateUserEducation)}}>
+                                                submitHandler(e, updateUserEducation, {schoolName: `${schoolNames[index]}`, degree: `${degrees[index]}`, field: `${fields[index]}`, from: `${froms[index]}`, to: `${tos[index]}`}, index)
+                                                if (validateText(`${schoolNames[index]}`, `${degrees[index]}`, `${fields[index]}`)){
+                                                    saveButtonsFunctions[index](!saveButtons[index]);
+                                                    if(index !== 2) {
+                                                        saveButtonsFunctions[index+1](false)
+                                                    }
+                                                } 
+
+                                                }} >
+
+                                                {errors[index] ? <p className="err-message">{errors[index]}</p> : null}
 
                                                 <div className="input__row">
-                                                    <input className="input-sm" placeholder="School Name" name={`schoolName${index}`} onChange={(e) => schoolNamesFunctions[index](e.target.value)} value={`${schoolNames[index]}`}/>
+                                                    <input className="input-sm" placeholder="School Name" name={`schoolName${index}`} onChange={(e) => schoolNamesFunctions[index](e.target.value)} value={`${schoolNames[index]}`} pattern="[A-Za-z0-9.' ]+" title="School Name"/>
                                                     <input className="input-sm" placeholder="Degree" onChange={(e) => degreesFunctions[index](e.target.value)} value={`${degrees[index]}`}/>
                                                 </div>
                 
