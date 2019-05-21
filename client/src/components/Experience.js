@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import {UPDATE_USER_EDUCATION_0} from '../queries/index';
 import {UPDATE_USER_EDUCATION_1} from '../queries/index';
+import {UPDATE_USER_EDUCATION_2} from '../queries/index';
 import {Mutation} from 'react-apollo';
 import {withRouter} from 'react-router-dom';
 
@@ -119,8 +120,8 @@ const Experience = (props) => {
        if (validateText(variables.schoolName, variables.degree, variables.field)) {
             
             console.log('test');
+            const updated = await updateUserEducation();
        }
-       //const updated = await updateUserEducation();
 
     }
 
@@ -156,7 +157,7 @@ const Experience = (props) => {
     const errors = [newError0, newError1, newError2];
     const errorFunctions = [setNewError0, setNewError1, setNewError2];
 
-    const mutationsFunctions = [UPDATE_USER_EDUCATION_0, UPDATE_USER_EDUCATION_1]
+    const mutationsFunctions = [UPDATE_USER_EDUCATION_0, UPDATE_USER_EDUCATION_1, UPDATE_USER_EDUCATION_2]
     
     console.log('test2', counter, educationArray);
 

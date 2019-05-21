@@ -72,6 +72,23 @@ exports.resolvers = {
             const updatedUser = await userForCheck.save();
 
             return `User updated`;
+        },
+
+        updateUserEducation1: async(root, args, {User}) => {
+            const userForCheck = await User.findOne({_id: args._id});
+            if(!userForCheck) {
+                throw new Error('User with provided id was not found');
+            }
+
+            userForCheck.education[1].schoolName = args.schoolName;
+            userForCheck.education[1].degree = args.degree;
+            userForCheck.education[1].field = args.field;
+            userForCheck.education[1].from = args.from;
+            userForCheck.education[1].to = args.to;
+
+            const updatedUser = await userForCheck.save();
+
+            return `User updated`;
         }
 
     },
