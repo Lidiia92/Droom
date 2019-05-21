@@ -51,7 +51,7 @@ const PersonalInfo = (props) => {
 
         e.preventDefault();
         const updated = await updatedInfo();
-        console.log('hi');
+        props.history.push('/experience');
     }
 
     function decrementcounter(e) {
