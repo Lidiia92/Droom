@@ -15,7 +15,7 @@ const User = require('./models/User');
 //Initializes application
 const corsOptions = {
     //origin: 'http://localhost:3000',
-    origin: 'https://react-apollo-droom.herokuapp.com/'
+    //origin: 'https://react-apollo-droom.herokuapp.com/'
 }
 
 const app = express();
