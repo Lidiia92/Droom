@@ -13,13 +13,15 @@ require('dotenv').config({path: 'variables.env'});
 const User = require('./models/User');
 
 //Initializes application
+
+const url = process.env.NODE_ENV === "production" ? 'https://react-apollo-droom.herokuapp.com/' : 'http://localhost:3000'
+
 const corsOptions = {
-    //origin: 'http://localhost:3000',
-    origin: 'https://react-apollo-droom.herokuapp.com/'
+    origin: 'http://localhost:3000'
 }
 
 const app = express();
-app.use(cors(corsOptions));
+app.use(cors());
 
 const { makeExecutableSchema } = require('graphql-tools');
 
@@ -30,7 +32,7 @@ const schema = makeExecutableSchema({
 });
 
 
-app.use('/graphql', bodyParser.json(), apolloUploadExpress({uploadDir: "./uploads"}), graphqlHTTP({
+app.use('/graphql', bodyParser.json(), graphqlHTTP({
     schema: schema,
     rootValue: resolvers,
     context: {
@@ -45,15 +47,15 @@ mongoose
     .then(() => console.log('DB connected'))
     .catch(err => console.error(err));
 
-if(process.env.NODE_ENV === "production") {
-    app.use(express.static('client/build'));
-    //app.use(express.static(path.join(__dirname, 'client', 'build')));
+// if(process.env.NODE_ENV === "production") {
+//     app.use(express.static('client/build'));
+//     //app.use(express.static(path.join(__dirname, 'client', 'build')));
 
-    app.get('*', (req, res) => {
-        res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+//     app.get('*', (req, res) => {
+//         res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
         
-    });
-}
+//     });
+// }
 
 const PORT = process.env.PORT || 3333;
 

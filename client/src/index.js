@@ -19,8 +19,8 @@ library.add(faUser, faSearch, faHandshake, faEyeSlash, faEye, faCheck, faImage, 
 
 
 const client = new ApolloClient({
-    //link: createHttpLink({ uri: 'http://localhost:3333/graphql' }),
-    link: createHttpLink({ uri: 'https://react-apollo-droom.herokuapp.com/graphql' }),
+    link: createHttpLink({ uri: 'http://localhost:3333/graphql' }),
+    //link: createHttpLink({ uri: 'https://react-apollo-droom.herokuapp.com/graphql' }),
     cache: new InMemoryCache()
 });
 
