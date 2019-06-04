@@ -309,6 +309,10 @@
 
 }
 
+.align-right {
+    text-align: right;
+}
+
 @media (max-width: 700px) {
     .sections {
 

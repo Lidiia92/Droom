@@ -38,7 +38,7 @@ app.use('/graphql', bodyParser.json(), graphqlHTTP({
     context: {
         User,
     },
-    graphiql: false,
+    graphiql: true,
 }));
 
 //Connect to database

@@ -7,6 +7,7 @@ import {withRouter} from 'react-router-dom';
 
 import {Link} from 'react-router-dom';
 import './styles/PersonalInfo.css';
+import { removeDirectivesFromDocument } from 'apollo-utilities';
 
 
 
@@ -131,6 +132,11 @@ const Experience = (props) => {
         } else {
             return false;
         }
+    }
+
+    function redirectToNextPage(e) {
+        e.preventDefault();
+        props.history.push('/experience2');
     }
 
 
@@ -265,7 +271,11 @@ const Experience = (props) => {
 
                     <div className="input__row">
                         {((educationArray.length === 3 && !educationArray.includes(null)) || (educationArray.length > 3 && educationArray.includes(null))) ? null : <p className="add-more" onClick={ () => addEducation(counter)}>+ Add New Education</p>}
-                    </div>  
+                    </div> 
+                        
+                    <div className="align-right"> 
+                        <button onClick={(e) => redirectToNextPage(e)}className="button" type="submit" disabled={saveButtons[0] === true ? false : true} >Next</button>
+                    </div>
 
                 </div>
 
