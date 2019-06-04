@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import {Link} from 'react-router-dom';
 import './styles/PersonalInfo.css';
 
-
+import states from '../components/Data/states';
 
 const Experience2 = (props) => {
 
@@ -40,10 +40,26 @@ const Experience2 = (props) => {
                 <h3 className="sections left-heading">Previuos Experience</h3>
 
                 <div className="form__wrapper">
+                    <form>          
+                        <div className="input__row">
+                            <input className="input-lg" placeholder="Company Name" />
+                        </div>
 
-  
-                                            
+                        <div className="input__row">
+                            <input className="input-lg" placeholder="Job Title" />
+                        </div>
 
+                        <div className="input__row">
+                            <input className="input-sm" placeholder="City" />
+                            <select className="input-sm">
+                                {states.map(state => <option key={state.abbreviation}>{state.name}</option>)}
+                            </select>
+                        </div>
+
+                        <div className="input__row ">
+
+                        </div>
+                    </form>
                 </div>
 
             </div>

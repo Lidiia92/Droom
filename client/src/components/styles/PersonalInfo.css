@@ -318,6 +318,11 @@
     margin-top: 25px;
 }
 
+.states {
+    display: inline-block;
+    width: 40%;
+}
+
 @media (max-width: 700px) {
     .sections {
 
