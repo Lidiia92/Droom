@@ -198,6 +198,8 @@ const Experience = (props) => {
                     </div>
                 </div>
 
+                <h3 className="sections left-heading">Educational Background</h3>
+
                 <div className="form__wrapper">
 
                     {educationArray.map((education, index) => {
