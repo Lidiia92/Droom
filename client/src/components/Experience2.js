@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import DatePicker from "react-datepicker";
 import {Link} from 'react-router-dom';
 import './styles/PersonalInfo.css';
 
@@ -56,9 +57,29 @@ const Experience2 = (props) => {
                             </select>
                         </div>
 
-                        <div className="input__row ">
+                        <div className="input__row">
+                           <div>
+                                <div className="date-picker">
+                                    <label htmlFor="date-picker1" className="label">Start Date</label>
+                                    <DatePicker id="date-picker2"/>
+                                </div>
+
+                                <div className="date-picker">
+                                    <label htmlFor="date-picker2" className="label">End Date</label>
+                                    <DatePicker id="date-picker2"/>
+                                </div>
+                           </div>
 
                         </div>
+
+                        <div className="input__row">
+                            <p className="add-more" >+ Add New Education</p>
+                        </div> 
+
+                        <div className="align-right"> 
+                            <button className="button" type="submit">Next</button>
+                        </div>
+
                     </form>
                 </div>
 
