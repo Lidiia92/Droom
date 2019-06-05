@@ -7,9 +7,35 @@ import states from '../components/Data/states';
 
 const Experience2 = (props) => {
 
+    const [secondForm, setSecondForm] = useState(false);
+    const [thirdForm, setThirdForm] = useState(false);
+
+    const [company1, setCompany1] = useState({
+        companyName : ''
+    });
+
+    const [company2, setCompany2] = useState({
+        companyName : ''
+    });
+
+    const [company3, setCompany3] = useState({
+        companyName : ''
+    });
+
+
     const errorStyle = {
         background: '#ffd1d1',
     };
+
+    function showForms() {
+        if (secondForm === false && thirdForm === false) {
+            setSecondForm(true);
+        }
+
+        if(secondForm === true && thirdForm === false) {
+            setThirdForm(true);
+        }
+    }
 
     return (
 
@@ -43,7 +69,7 @@ const Experience2 = (props) => {
                 <div className="form__wrapper">
                     <form>          
                         <div className="input__row">
-                            <input className="input-lg" placeholder="Company Name" />
+                            <input className="input-lg" placeholder="Company Name" value={company1.companyName} onChange={(e) => setCompany1({companyName: e.target.value})}/>
                         </div>
 
                         <div className="input__row">
@@ -72,15 +98,91 @@ const Experience2 = (props) => {
 
                         </div>
 
-                        <div className="input__row">
-                            <p className="add-more" >+ Add New Education</p>
-                        </div> 
-
-                        <div className="align-right"> 
-                            <button className="button" type="submit">Next</button>
-                        </div>
-
+                        <button className="button" type="submit"  >Save</button>
                     </form>
+
+                    {secondForm ? 
+                        <form>          
+                            <div className="input__row">
+                                <input className="input-lg" placeholder="Company Name" value={company2.companyName} onChange={(e) => setCompany2({companyName: e.target.value})}/>
+                            </div>
+
+                            <div className="input__row">
+                                <input className="input-lg" placeholder="Job Title" />
+                            </div>
+
+                            <div className="input__row">
+                                <input className="input-sm" placeholder="City" />
+                                <select className="input-sm">
+                                    {states.map(state => <option key={state.abbreviation}>{state.name}</option>)}
+                                </select>
+                            </div>
+
+                            <div className="input__row">
+                                <div>
+                                    <div className="date-picker">
+                                        <label htmlFor="date-picker1" className="label">Start Date</label>
+                                        <DatePicker id="date-picker2"/>
+                                    </div>
+
+                                    <div className="date-picker">
+                                        <label htmlFor="date-picker2" className="label">End Date</label>
+                                        <DatePicker id="date-picker2"/>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <button className="button" type="submit"  >Save</button>
+                            <button className="button btn-red" >Cancel</button> 
+                     </form>
+
+                     : null}
+
+                    {thirdForm ? 
+                        <form>          
+                            <div className="input__row">
+                                <input className="input-lg" placeholder="Company Name" value={company3.companyName} onChange={(e) => setCompany3({companyName: e.target.value})}/>
+                            </div>
+
+                            <div className="input__row">
+                                <input className="input-lg" placeholder="Job Title" />
+                            </div>
+
+                            <div className="input__row">
+                                <input className="input-sm" placeholder="City" />
+                                <select className="input-sm">
+                                    {states.map(state => <option key={state.abbreviation}>{state.name}</option>)}
+                                </select>
+                            </div>
+
+                            <div className="input__row">
+                                <div>
+                                    <div className="date-picker">
+                                        <label htmlFor="date-picker1" className="label">Start Date</label>
+                                        <DatePicker id="date-picker2"/>
+                                    </div>
+
+                                    <div className="date-picker">
+                                        <label htmlFor="date-picker2" className="label">End Date</label>
+                                        <DatePicker id="date-picker2"/>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <button className="button" type="submit"  >Save</button>
+                            <button className="button btn-red" >Cancel</button> 
+                     </form>
+
+                     : null}
+
+                    <div className="input__row">
+                            {secondForm && thirdForm ? null : <p className="add-more" onClick={(e) => showForms()}>+ Add New Experience</p>}
+                    </div> 
+
+                    <div className="align-right"> 
+                            <button className="button" type="submit">Next</button>
+                    </div>
                 </div>
 
             </div>
