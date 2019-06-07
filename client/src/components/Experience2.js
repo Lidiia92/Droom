@@ -27,7 +27,8 @@ const Experience2 = (props) => {
         background: '#ffd1d1',
     };
 
-    function showForms() {
+    function showForms(e) {
+        e.preventDefault();
         if (secondForm === false && thirdForm === false) {
             setSecondForm(true);
         }
@@ -35,6 +36,34 @@ const Experience2 = (props) => {
         if(secondForm === true && thirdForm === false) {
             setThirdForm(true);
         }
+
+        if(secondForm === false && thirdForm === true) {
+            setSecondForm(true);
+            setCompany2({
+                companyName: company3.companyName
+            });
+            setThirdForm(false);
+            setCompany3({
+                companyName: ''
+            });
+            setThirdForm(true);
+        }
+    }
+
+    function removeSecondForm(e) {
+        e.preventDefault();
+        setSecondForm(false);
+        setCompany2({
+            companyName: ''
+        })
+    }
+
+    function removeThirdForm(e) {
+        e.preventDefault();
+        setThirdForm(false);
+        setCompany3({
+            companyName: ''
+        })
     }
 
     return (
@@ -133,7 +162,7 @@ const Experience2 = (props) => {
 
                             </div>
                             <button className="button" type="submit"  >Save</button>
-                            <button className="button btn-red" >Cancel</button> 
+                            <button onClick={e => removeSecondForm(e)} className="button btn-red" >Cancel</button> 
                      </form>
 
                      : null}
@@ -171,13 +200,13 @@ const Experience2 = (props) => {
                             </div>
 
                             <button className="button" type="submit"  >Save</button>
-                            <button className="button btn-red" >Cancel</button> 
+                            <button onClick={e => removeThirdForm(e)} className="button btn-red" >Cancel</button> 
                      </form>
 
                      : null}
 
                     <div className="input__row">
-                            {secondForm && thirdForm ? null : <p className="add-more" onClick={(e) => showForms()}>+ Add New Experience</p>}
+                            {secondForm && thirdForm ? null : <p className="add-more" onClick={(e) => showForms(e)}>+ Add New Experience</p>}
                     </div> 
 
                     <div className="align-right"> 
