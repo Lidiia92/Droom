@@ -11,15 +11,19 @@ const Experience2 = (props) => {
     const [thirdForm, setThirdForm] = useState(false);
 
     const [company1, setCompany1] = useState({
-        companyName : ''
+        companyName : '',
+        jobTitle: '',
+
     });
 
     const [company2, setCompany2] = useState({
-        companyName : ''
+        companyName : '',
+        jobTitle: ''
     });
 
     const [company3, setCompany3] = useState({
-        companyName : ''
+        companyName : '',
+        jobTitle: ''
     });
 
 
@@ -40,11 +44,13 @@ const Experience2 = (props) => {
         if(secondForm === false && thirdForm === true) {
             setSecondForm(true);
             setCompany2({
-                companyName: company3.companyName
+                companyName: company3.companyName,
+                jobTitle: company3.jobTitle
             });
             setThirdForm(false);
             setCompany3({
-                companyName: ''
+                companyName: '',
+                jobTitle: ''
             });
             setThirdForm(true);
         }
@@ -54,7 +60,8 @@ const Experience2 = (props) => {
         e.preventDefault();
         setSecondForm(false);
         setCompany2({
-            companyName: ''
+            companyName: '',
+            jobTitle: ''
         })
     }
 
@@ -62,9 +69,12 @@ const Experience2 = (props) => {
         e.preventDefault();
         setThirdForm(false);
         setCompany3({
-            companyName: ''
+            companyName: '',
+            jobTitle: ''
         })
     }
+
+    console.log('company2', company2, 'company3', company3)
 
     return (
 
@@ -98,11 +108,11 @@ const Experience2 = (props) => {
                 <div className="form__wrapper">
                     <form>          
                         <div className="input__row">
-                            <input className="input-lg" placeholder="Company Name" value={company1.companyName} onChange={(e) => setCompany1({companyName: e.target.value})}/>
+                            <input className="input-lg" placeholder="Company Name" value={company1.companyName} onChange={(e) => setCompany1({...company1, companyName: e.target.value})}/>
                         </div>
 
                         <div className="input__row">
-                            <input className="input-lg" placeholder="Job Title" />
+                            <input className="input-lg" placeholder="Job Title" value={company1.jobTitle} onChange={(e) => setCompany1({...company1, jobTitle: e.target.value})}/>
                         </div>
 
                         <div className="input__row">
@@ -133,11 +143,11 @@ const Experience2 = (props) => {
                     {secondForm ? 
                         <form>          
                             <div className="input__row">
-                                <input className="input-lg" placeholder="Company Name" value={company2.companyName} onChange={(e) => setCompany2({companyName: e.target.value})}/>
+                                <input className="input-lg" placeholder="Company Name" value={company2.companyName} onChange={(e) => setCompany2({...company2, companyName: e.target.value})}/>
                             </div>
 
                             <div className="input__row">
-                                <input className="input-lg" placeholder="Job Title" />
+                                <input className="input-lg" placeholder="Job Title" value={company2.jobTitle} onChange={(e) => setCompany2({...company2, jobTitle: e.target.value})}/>
                             </div>
 
                             <div className="input__row">
@@ -170,11 +180,11 @@ const Experience2 = (props) => {
                     {thirdForm ? 
                         <form>          
                             <div className="input__row">
-                                <input className="input-lg" placeholder="Company Name" value={company3.companyName} onChange={(e) => setCompany3({companyName: e.target.value})}/>
+                                <input className="input-lg" placeholder="Company Name" value={company3.companyName} onChange={(e) => setCompany3({...company3, companyName: e.target.value})}/>
                             </div>
 
                             <div className="input__row">
-                                <input className="input-lg" placeholder="Job Title" />
+                                <input className="input-lg" placeholder="Job Title" value={company3.jobTitle} onChange={(e) => setCompany3({...company3, jobTitle: e.target.value})}/>
                             </div>
 
                             <div className="input__row">

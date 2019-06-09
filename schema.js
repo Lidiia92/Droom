@@ -27,7 +27,7 @@ exports.typeDefs =`
 
     type UserExperience {
         companyName: String
-        title: String
+        jobTitle: String
         from: String
         to: String
     }

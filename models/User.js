@@ -89,7 +89,7 @@ const UserExperience = new Schema({
         default: ""
     },
 
-    title: {
+    jobTitle: {
         type: String,
         default: ""
     },
