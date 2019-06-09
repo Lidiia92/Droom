@@ -9,21 +9,41 @@ const Experience2 = (props) => {
 
     const [secondForm, setSecondForm] = useState(false);
     const [thirdForm, setThirdForm] = useState(false);
+    const [dateAsString, setDateAsString] = useState("");
+    const [newError, setNewError] = useState("");
+
+    function dataString(data) {
+        const dataString = JSON.stringify(data);
+        setDateAsString(dataString);
+        console.log(dataString);
+    }
 
     const [company1, setCompany1] = useState({
         companyName : '',
         jobTitle: '',
+        city: '',
+        state: '',
+        startDate: new Date(),
+        endDate: new Date()
 
     });
 
     const [company2, setCompany2] = useState({
         companyName : '',
-        jobTitle: ''
+        jobTitle: '',
+        city: '',
+        state: '',
+        startDate: '',
+        endDate: ''
     });
 
     const [company3, setCompany3] = useState({
         companyName : '',
-        jobTitle: ''
+        jobTitle: '',
+        city: '',
+        state: '',
+        startDate: '',
+        endDate: ''
     });
 
 
@@ -74,7 +94,7 @@ const Experience2 = (props) => {
         })
     }
 
-    console.log('company2', company2, 'company3', company3)
+    console.log('company1', company1, 'company3', company3, 'string date', dateAsString)
 
     return (
 
@@ -116,8 +136,8 @@ const Experience2 = (props) => {
                         </div>
 
                         <div className="input__row">
-                            <input className="input-sm" placeholder="City" />
-                            <select className="input-sm">
+                            <input className="input-sm" placeholder="City" value={company1.city} onChange={(e) => setCompany1({...company1, city: e.target.value})}/>
+                            <select className="input-sm" value={company1.state} onChange={e => setCompany1({...company1, state: e.target.value})}>
                                 {states.map(state => <option key={state.abbreviation}>{state.name}</option>)}
                             </select>
                         </div>
@@ -126,12 +146,15 @@ const Experience2 = (props) => {
                            <div>
                                 <div className="date-picker">
                                     <label htmlFor="date-picker1" className="label">Start Date</label>
-                                    <DatePicker id="date-picker2"/>
+                                    <DatePicker id="date-picker2" selected={company1.startDate} 
+                                    onChange={e => {setCompany1({...company1, startDate: e});
+                                    dataString(company1.startDate);
+                                    }}/>
                                 </div>
 
                                 <div className="date-picker">
                                     <label htmlFor="date-picker2" className="label">End Date</label>
-                                    <DatePicker id="date-picker2"/>
+                                    <DatePicker id="date-picker2" selected={company1.endDate}/>
                                 </div>
                            </div>
 
