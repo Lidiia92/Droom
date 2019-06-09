@@ -94,6 +94,16 @@ const UserExperience = new Schema({
         default: ""
     },
 
+    city: {
+        type: String,
+        default: ""
+    },
+
+    state: {
+        type: String,
+        default: ""
+    },
+
     from: {
         type: String,
         default: ""
