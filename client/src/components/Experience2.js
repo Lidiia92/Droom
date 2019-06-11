@@ -10,7 +10,10 @@ const Experience2 = (props) => {
     const [secondForm, setSecondForm] = useState(false);
     const [thirdForm, setThirdForm] = useState(false);
     const [dateAsString, setDateAsString] = useState("");
-    const [newError, setNewError] = useState("");
+    
+    const [newError1, setNewError1] = useState("");
+    const [newError2, setNewError2] = useState("");
+    const [newError3, setNewError3] = useState("");
 
     function dataString(data) {
         const dataString = JSON.stringify(data);
@@ -65,12 +68,20 @@ const Experience2 = (props) => {
             setSecondForm(true);
             setCompany2({
                 companyName: company3.companyName,
-                jobTitle: company3.jobTitle
+                jobTitle: company3.jobTitle,
+                city: company3.city,
+                state: company3.state,
+                startDate: company3.startDate,
+                endDate: company3.endDate
             });
             setThirdForm(false);
             setCompany3({
                 companyName: '',
-                jobTitle: ''
+                jobTitle: '',
+                city: '',
+                state: 'Alabama',
+                startDate: new Date(),
+                endDate: new Date()
             });
             setThirdForm(true);
         }
@@ -81,7 +92,11 @@ const Experience2 = (props) => {
         setSecondForm(false);
         setCompany2({
             companyName: '',
-            jobTitle: ''
+            jobTitle: '',
+            city: '',
+            state: 'Alabama',
+            startDate: new Date(),
+            endDate: new Date()
         })
     }
 
@@ -90,7 +105,11 @@ const Experience2 = (props) => {
         setThirdForm(false);
         setCompany3({
             companyName: '',
-            jobTitle: ''
+            jobTitle: '',
+            city: '',
+            state: 'Alabama',
+            startDate: new Date(),
+            endDate: new Date()
         })
     }
 
