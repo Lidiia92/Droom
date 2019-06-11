@@ -22,7 +22,7 @@ const Experience2 = (props) => {
         companyName : '',
         jobTitle: '',
         city: '',
-        state: '',
+        state: 'Alabama',
         startDate: new Date(),
         endDate: new Date()
 
@@ -32,18 +32,18 @@ const Experience2 = (props) => {
         companyName : '',
         jobTitle: '',
         city: '',
-        state: '',
-        startDate: '',
-        endDate: ''
+        state: 'Alabama',
+        startDate: new Date(),
+        endDate: new Date()
     });
 
     const [company3, setCompany3] = useState({
         companyName : '',
         jobTitle: '',
         city: '',
-        state: '',
-        startDate: '',
-        endDate: ''
+        state: 'Alabama',
+        startDate: new Date(),
+        endDate: new Date()
     });
 
 
@@ -154,7 +154,10 @@ const Experience2 = (props) => {
 
                                 <div className="date-picker">
                                     <label htmlFor="date-picker2" className="label">End Date</label>
-                                    <DatePicker id="date-picker2" selected={company1.endDate}/>
+                                    <DatePicker id="date-picker2" selected={company1.endDate} 
+                                    onChange={e => {setCompany1({...company1, endDate: e});
+                                    dataString(company1.endDate);
+                                    }}/>
                                 </div>
                            </div>
 
@@ -174,8 +177,8 @@ const Experience2 = (props) => {
                             </div>
 
                             <div className="input__row">
-                                <input className="input-sm" placeholder="City" />
-                                <select className="input-sm">
+                                <input className="input-sm" placeholder="City" value={company2.city} onChange={(e) => setCompany2({...company2, city: e.target.value})}/>
+                                <select className="input-sm" value={company2.state} onChange={e => setCompany2({...company2, state: e.target.value})}>
                                     {states.map(state => <option key={state.abbreviation}>{state.name}</option>)}
                                 </select>
                             </div>
@@ -183,13 +186,19 @@ const Experience2 = (props) => {
                             <div className="input__row">
                                 <div>
                                     <div className="date-picker">
-                                        <label htmlFor="date-picker1" className="label">Start Date</label>
-                                        <DatePicker id="date-picker2"/>
+                                        <label htmlFor="date-picker3" className="label">Start Date</label>
+                                        <DatePicker id="date-picker3" selected={company2.startDate} 
+                                        onChange={e => {setCompany2({...company2, startDate: e});
+                                        dataString(company2.startDate);
+                                        }}/>
                                     </div>
 
                                     <div className="date-picker">
-                                        <label htmlFor="date-picker2" className="label">End Date</label>
-                                        <DatePicker id="date-picker2"/>
+                                        <label htmlFor="date-picker4" className="label">End Date</label>
+                                        <DatePicker id="date-picker4" selected={company2.endDate} 
+                                        onChange={e => {setCompany2({...company2, endDate: e});
+                                        dataString(company2.endDate);
+                                        }}/>
                                     </div>
                                 </div>
 
@@ -211,8 +220,8 @@ const Experience2 = (props) => {
                             </div>
 
                             <div className="input__row">
-                                <input className="input-sm" placeholder="City" />
-                                <select className="input-sm">
+                                <input className="input-sm" placeholder="City" value={company3.city} onChange={(e) => setCompany3({...company3, city: e.target.value})}/>
+                                <select className="input-sm" value={company3.state} onChange={e => setCompany3({...company3, state: e.target.value})}>
                                     {states.map(state => <option key={state.abbreviation}>{state.name}</option>)}
                                 </select>
                             </div>
@@ -220,13 +229,19 @@ const Experience2 = (props) => {
                             <div className="input__row">
                                 <div>
                                     <div className="date-picker">
-                                        <label htmlFor="date-picker1" className="label">Start Date</label>
-                                        <DatePicker id="date-picker2"/>
+                                        <label htmlFor="date-picker5" className="label">Start Date</label>
+                                        <DatePicker id="date-picker5" selected={company3.startDate} 
+                                        onChange={e => {setCompany3({...company3, startDate: e});
+                                        dataString(company3.startDate);
+                                        }}/>
                                     </div>
 
                                     <div className="date-picker">
-                                        <label htmlFor="date-picker2" className="label">End Date</label>
-                                        <DatePicker id="date-picker2"/>
+                                        <label htmlFor="date-picker6" className="label">End Date</label>
+                                        <DatePicker id="date-picker6" selected={company3.endDate} 
+                                        onChange={e => {setCompany3({...company3, endDate: e});
+                                        dataString(company3.endDate);
+                                        }}/>
                                     </div>
                                 </div>
 
