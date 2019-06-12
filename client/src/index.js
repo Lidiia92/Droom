@@ -10,8 +10,8 @@ import './index.css';
 import App from './components/App';
 import Signup from './components/Auth/Signup';
 import PersonalInfo from './components/PersonalInfo';
+import Education from './components/Education';
 import Experience from './components/Experience';
-import Experience2 from './components/Experience2';
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faUser, faSearch, faHandshake, faEyeSlash, faEye, faCheck, faImage, faCheckSquare} from '@fortawesome/free-solid-svg-icons'
@@ -31,8 +31,8 @@ const Root = () => (
             <Route path="/" exact component={App} />
             <Route path="/signup" render={() => <Signup />} />
             <Route path="/personalinfo" render={(props) => <PersonalInfo {...props}/>} />
+            <Route path="/education" render={(props) => <Education {...props}/>} />
             <Route path="/experience" render={(props) => <Experience {...props}/>} />
-            <Route path="/experience2" render={(props) => <Experience2 {...props}/>} />
             <Redirect to="/" />
         </Switch>
     </Router>
