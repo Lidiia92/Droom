@@ -9,16 +9,48 @@ const Experience2 = (props) => {
 
     const [secondForm, setSecondForm] = useState(false);
     const [thirdForm, setThirdForm] = useState(false);
-    const [dateAsString, setDateAsString] = useState("");
+
+    const [startDateAsString1, setStartDateAsString1] = useState('');
+    const [endDateAsString1, setEndDateAsString1] = useState('');
+
+    const [startDateAsString2, setStartDateAsString2] = useState('');
+    const [endDateAsString2, setEndDateAsString2] = useState('');
+
+    const [startDateAsString3, setStartDateAsString3] = useState('');
+    const [endDateAsString3, setEndDateAsString3] = useState('');
     
     const [newError1, setNewError1] = useState("");
     const [newError2, setNewError2] = useState("");
     const [newError3, setNewError3] = useState("");
 
-    function dataString(data) {
+    function startDateHandler1(data) {
         const dataString = JSON.stringify(data);
-        setDateAsString(dataString);
-        console.log(dataString);
+        setStartDateAsString1(dataString);
+    }
+
+    function endDateHandler1(data) {
+        const dataString = JSON.stringify(data);
+        setEndDateAsString1(dataString);
+    }
+
+    function startDateHandler2(data) {
+        const dataString = JSON.stringify(data);
+        setStartDateAsString2(dataString);
+    }
+
+    function endDateHandler2(data) {
+        const dataString = JSON.stringify(data);
+        setEndDateAsString2(dataString);
+    }
+
+    function startDateHandler3(data) {
+        const dataString = JSON.stringify(data);
+        setStartDateAsString3(dataString);
+    }
+
+    function endDateHandler3(data) {
+        const dataString = JSON.stringify(data);
+        setEndDateAsString3(dataString);
     }
 
     const [company1, setCompany1] = useState({
@@ -113,7 +145,10 @@ const Experience2 = (props) => {
         })
     }
 
-    console.log('company1', company1, 'company3', company3, 'string date', dateAsString)
+   function submitFirstCompany(e, variables) {
+        e.preventDefault();
+        console.log(variables);
+   }
 
     return (
 
@@ -145,7 +180,7 @@ const Experience2 = (props) => {
                 <h3 className="sections left-heading">Previuos Experience</h3>
 
                 <div className="form__wrapper">
-                    <form>          
+                    <form onSubmit={e => submitFirstCompany(e, {companyName: company1.companyName, jobTitle: company1.jobTitle, city: company1.city, state: company1.state, startDate: startDateAsString1, endDate: endDateAsString1})}>          
                         <div className="input__row">
                             <input className="input-lg" placeholder="Company Name" value={company1.companyName} onChange={(e) => setCompany1({...company1, companyName: e.target.value})}/>
                         </div>
@@ -167,7 +202,7 @@ const Experience2 = (props) => {
                                     <label htmlFor="date-picker1" className="label">Start Date</label>
                                     <DatePicker id="date-picker2" selected={company1.startDate} 
                                     onChange={e => {setCompany1({...company1, startDate: e});
-                                    dataString(company1.startDate);
+                                    startDateHandler1(company1.startDate);
                                     }}/>
                                 </div>
 
@@ -175,7 +210,7 @@ const Experience2 = (props) => {
                                     <label htmlFor="date-picker2" className="label">End Date</label>
                                     <DatePicker id="date-picker2" selected={company1.endDate} 
                                     onChange={e => {setCompany1({...company1, endDate: e});
-                                    dataString(company1.endDate);
+                                    endDateHandler1(company1.endDate);
                                     }}/>
                                 </div>
                            </div>
@@ -208,7 +243,7 @@ const Experience2 = (props) => {
                                         <label htmlFor="date-picker3" className="label">Start Date</label>
                                         <DatePicker id="date-picker3" selected={company2.startDate} 
                                         onChange={e => {setCompany2({...company2, startDate: e});
-                                        dataString(company2.startDate);
+                                        startDateHandler2(company2.startDate);
                                         }}/>
                                     </div>
 
@@ -216,7 +251,7 @@ const Experience2 = (props) => {
                                         <label htmlFor="date-picker4" className="label">End Date</label>
                                         <DatePicker id="date-picker4" selected={company2.endDate} 
                                         onChange={e => {setCompany2({...company2, endDate: e});
-                                        dataString(company2.endDate);
+                                        endDateHandler2(company2.endDate);
                                         }}/>
                                     </div>
                                 </div>
@@ -251,7 +286,7 @@ const Experience2 = (props) => {
                                         <label htmlFor="date-picker5" className="label">Start Date</label>
                                         <DatePicker id="date-picker5" selected={company3.startDate} 
                                         onChange={e => {setCompany3({...company3, startDate: e});
-                                        dataString(company3.startDate);
+                                        startDateHandler3(company3.startDate);
                                         }}/>
                                     </div>
 
@@ -259,7 +294,7 @@ const Experience2 = (props) => {
                                         <label htmlFor="date-picker6" className="label">End Date</label>
                                         <DatePicker id="date-picker6" selected={company3.endDate} 
                                         onChange={e => {setCompany3({...company3, endDate: e});
-                                        dataString(company3.endDate);
+                                        endDateHandler3(company3.endDate);
                                         }}/>
                                     </div>
                                 </div>
