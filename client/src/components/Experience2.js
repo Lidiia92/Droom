@@ -148,6 +148,9 @@ const Experience2 = (props) => {
    function submitFirstCompany(e, variables) {
         e.preventDefault();
         console.log(variables);
+        if(!variables.companyName || !variables.jobTitle || !variables.city || !variables.state || !variables.startDate || !variables.endDate) {
+            
+        }
    }
 
     return (

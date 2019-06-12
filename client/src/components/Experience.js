@@ -44,6 +44,9 @@ const Experience = (props) => {
     const [to0, setTo0] = useState("");
     const [to1, setTo1] = useState("");
     const [to2, setTo2] = useState("");
+
+    const [disabledSecond, setDisabledSecond] = useState(false);
+    const [disabledThird, setDisabledThird] = useState(false);
    
 
 
@@ -121,6 +124,11 @@ const Experience = (props) => {
        if (validateText(variables.schoolName, variables.degree, variables.field)) {
             
             console.log('test');
+            if(index === 1) {
+                setDisabledSecond(true);
+            } else if (index === 2) {
+                setDisabledThird(true);
+            }
             const updated = await updateUserEducation();
        }
 
@@ -258,7 +266,7 @@ const Experience = (props) => {
                                                 </div> 
                 
                                                 <button className="button" type="submit" disabled={saveButtons[index]} >Save</button>
-                                                {index !== 0 ? <button className="button btn-red" onClick={(e) => removeEducation(e, education, index)}>Cancel</button> : null}  
+                                                {index !== 0 ? <button className="button btn-red"  disabled={disabledSecond && index === 1 || disabledThird && index ===2 ? true : false} onClick={(e) => removeEducation(e, education, index)}>Cancel</button> : null}  
                 
                                             </form>
                                         );
