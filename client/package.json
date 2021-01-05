@@ -10,7 +10,7 @@
     "apollo-cache-inmemory": "^1.5.1",
     "apollo-link-http": "^1.5.14",
     "apollo-upload-client": "^10.0.0",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "jwt-decode": "^2.2.0",
     "react": "^16.8.5",
     "react-anchor-link-smooth-scroll": "^1.0.12",
